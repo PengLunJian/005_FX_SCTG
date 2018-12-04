@@ -1,0 +1,180 @@
+@import "variable";
+
+#main {
+  overflow-x: hidden;
+  padding-bottom: 0.51rem;
+  #header {
+
+  }
+  #body {
+    .banner {
+      height: 1.17rem;
+      .swiper-container {
+        height: 100%;
+        .swiper-pagination-bullets {
+          font-size: 0 !important;
+          .swiper-pagination-bullet {
+            width: 0.08rem;
+            height: 0.08rem;
+            margin: 0 0.03rem;
+          }
+        }
+        .swiper-pagination-bullet-active {
+          background-color: @white;
+        }
+      }
+    }
+    .navigation {
+      .nav-inner {
+        padding: 0.05rem 0rem 0.15rem;
+        font-size: 0;
+        .nav-item {
+          text-align: center;
+          a {
+            padding-top: 0.1rem;
+          }
+          img {
+            width: 0.5rem;
+            height: 0.5rem;
+          }
+          .item-desc {
+            height: 0.2rem;
+            line-height: 0.2rem;
+            margin-top: 0.1rem;
+            font-size: 0.13rem;
+          }
+        }
+      }
+    }
+    .hot {
+      .title {
+        padding: 0.1rem 0.15rem 0;
+        font-size: 0.14rem;
+        font-weight: normal;
+      }
+      .hot-inner {
+        margin-left: -0.075rem;
+        margin-right: -0.075rem;
+        padding: 0.1rem 0.15rem 0.15rem;
+        .hot-item {
+          padding: 0 0.075rem;
+          a {
+            overflow: hidden;
+            position: relative;
+            border-radius: 0.05rem;
+          }
+        }
+        .item-img {
+          height: 0.8rem;
+          font-size: 0;
+        }
+        .item-info {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 0.2rem;
+          line-height: 0.2rem;
+          padding: 0 0.15rem;
+          background-color: rgba(0, 0, 0, .6);
+          text-align: center;
+          font-size: 0.12rem;
+          color: @white;
+        }
+      }
+    }
+    .product {
+      background-color: @transparent;
+      .product-item {
+        margin-bottom: 0.1rem;
+        background-color: @white;
+        a {
+          padding: 0.1rem 0.15rem;
+        }
+        .item-img {
+          float: left;
+          width: 25%;
+          overflow: hidden;
+          height: 0.6rem;
+          border-radius: 0.05rem;
+          font-size: 0;
+        }
+        .item-info {
+          float: left;
+          width: 75%;
+          line-height: 0.2rem;
+          padding-left: 0.15rem;
+          .item-title {
+            font-size: 0.14rem;
+            font-weight: normal;
+          }
+          .item-desc {
+            font-size: 0.12rem;
+            color: @fontColor2;
+          }
+          .item-time {
+            display: block;
+            text-align: right;
+            font-size: 0.12rem;
+            color: @fontColor3;
+          }
+        }
+      }
+    }
+  }
+  #footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    border-top: 1px solid @borderColor;
+    background-color: @white;
+    .footer-inner {
+      padding: 0;
+      text-align: center;
+      .footer-item {
+        background-repeat: no-repeat;
+        background-size: auto 0.18rem;
+        background-position: center 0.08rem;
+        a {
+          padding-top: 0.25rem;
+          .item-desc {
+            height: 0.25rem;
+            line-height: 0.25rem;
+            font-size: 0.12rem;
+          }
+        }
+        &.active {
+          .item-desc {
+            color: @activeColor;
+          }
+        }
+        &:nth-child(1) {
+          background-image: url('../images/footer_item01@3x.png');
+          &.active {
+            background-image: url('../images/footer_item01_active@3x.png');
+          }
+        }
+        &:nth-child(2) {
+          background-image: url('../images/footer_item02@3x.png');
+          &.active {
+            background-image: url('../images/footer_item02_active@3x.png');
+          }
+        }
+        &:nth-child(3) {
+          background-image: url('../images/footer_item03@3x.png');
+          &.active {
+            background-image: url('../images/footer_item03_active@3x.png');
+          }
+        }
+        &:nth-child(4) {
+          background-image: url('../images/footer_item04@3x.png');
+          &.active {
+            background-image: url('../images/footer_item04_active@3x.png');
+          }
+        }
+      }
+    }
+  }
+}

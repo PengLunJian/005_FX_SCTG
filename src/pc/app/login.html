@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>对账平台--登录</title>
+    <link rel="stylesheet" type="text/css" href="../libs/bootstrap/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/font.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/login.css"/>
+    <!--[if lt IE 9]>
+    <script src="../libs/polyfills/es5-shim.min.js"></script>
+    <script src="../libs/polyfills/es5-sham.min.js"></script>
+    <script src="../libs/polyfills/json3.min.js"></script>
+    <script src="../libs/polyfills/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div id="main">
+    <div id="header"></div>
+    <div id="body">
+        <div class="login">
+            <div class="login-content">
+                <div class="login-header">
+                    <h2 class="login-title">对账<span class="easy">DZ</span>
+                        <small class="version">1.0</small>
+                        平台
+                    </h2>
+                </div>
+                <div class="login-body">
+                    <div class="form-group">
+                        <label class="form-label icon-user" for="username"></label>
+                        <input class="form-input" name="username" id="username" type="text" autocomplete="off"
+                               placeholder="请输入用户名"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label icon-key" for="password"></label>
+                        <input class="form-input" name="password" id="password" type="password" placeholder="请输入密码"/>
+                    </div>
+                </div>
+                <div class="login-footer">
+                    <button class="btn btn-login">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+</div>
+
+<script type="text/javascript" src="../libs/require/require.js"></script>
+<script type="text/javascript" src="../js/require-config.js"></script>
+<script type="text/javascript" src="../js/login.js"></script>
+</body>
+</html>

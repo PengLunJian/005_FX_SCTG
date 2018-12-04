@@ -1,0 +1,162 @@
+@import "variable";
+
+#main {
+  overflow-x: hidden;
+  padding-bottom: 0.51rem;
+  #header {
+
+  }
+  #body {
+    .user {
+      .user-base {
+        height: 1.7rem;
+        padding: 0 0.1rem;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: url("../images/user_bg@2x.png");
+        text-align: center;
+        font-size: 0;
+        &:before {
+          content: '';
+          height: 100%;
+          display: inline-block;
+          vertical-align: middle;
+        }
+        a {
+          display: inline-block;
+          vertical-align: middle;
+          img {
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 100%;
+          }
+          p {
+            height: 0.2rem;
+            line-height: 0.2rem;
+            margin-top: 0.2rem;
+            text-align: center;
+            font-size: 0.13rem;
+            color: @white;
+          }
+        }
+      }
+      .user-info {
+        padding: 0.1rem 0;
+        text-align: center;
+        .label {
+          display: block;
+          height: 0.2rem;
+          line-height: 0.2rem;
+        }
+        .value {
+          display: block;
+          height: 0.2rem;
+          line-height: 0.2rem;
+          font-weight: bold;
+        }
+      }
+    }
+    .group {
+      .group-item {
+        a {
+          padding-left: 0.15rem;
+        }
+        .item-inner {
+          position: relative;
+          padding: 0.08rem 0.15rem 0.08rem 0;
+          border-bottom: 1px solid @borderColor;
+          .item-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0.26rem;
+            height: 100%;
+            padding: 0.08rem 0;
+            font-size: 0;
+          }
+          .item-info {
+            padding-left: 0.36rem;
+            .item-desc {
+              display: inline-block;
+              vertical-align: middle;
+              height: 0.26rem;
+              line-height: 0.26rem;
+              font-size: 0.14rem;
+              color: @fontColor2;
+            }
+            .item-icon {
+              float: right;
+              display: block;
+              height: 0.26rem;
+              line-height: 0.26rem;
+              position: relative;
+              font-size: 0.15rem;
+              color: #c7c7c7;
+            }
+          }
+        }
+        &:last-child {
+          .item-inner {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+  #footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    border-top: 1px solid @borderColor;
+    background-color: @white;
+    .footer-inner {
+      padding: 0;
+      text-align: center;
+      .footer-item {
+        background-repeat: no-repeat;
+        background-size: auto 0.18rem;
+        background-position: center 0.08rem;
+        a {
+          padding-top: 0.25rem;
+          .item-desc {
+            height: 0.25rem;
+            line-height: 0.25rem;
+            font-size: 0.12rem;
+          }
+        }
+        &.active {
+          .item-desc {
+            color: @activeColor;
+          }
+        }
+        &:nth-child(1) {
+          background-image: url('../images/footer_item01@3x.png');
+          &.active {
+            background-image: url('../images/footer_item01_active@3x.png');
+          }
+        }
+        &:nth-child(2) {
+          background-image: url('../images/footer_item02@3x.png');
+          &.active {
+            background-image: url('../images/footer_item02_active@3x.png');
+          }
+        }
+        &:nth-child(3) {
+          background-image: url('../images/footer_item03@3x.png');
+          &.active {
+            background-image: url('../images/footer_item03_active@3x.png');
+          }
+        }
+        &:nth-child(4) {
+          background-image: url('../images/footer_item04@3x.png');
+          &.active {
+            background-image: url('../images/footer_item04_active@3x.png');
+          }
+        }
+      }
+    }
+  }
+}
