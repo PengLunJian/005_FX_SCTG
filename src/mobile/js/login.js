@@ -7,6 +7,8 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper'], function ($, co
     };
 
     LoginPage.prototype.constructor = function () {
+        var oSvg = document.getElementById('circle');
+        console.log(oSvg.getTotalLength());
     };
 
     new LoginPage();
