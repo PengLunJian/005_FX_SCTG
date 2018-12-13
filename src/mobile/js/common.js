@@ -1,4 +1,4 @@
-define(['jquery', 'fastclick'], function ($, fastclick) {
+define(['jquery', 'fastclick', 'Toast'], function ($, fastclick, Toast) {
     /**
      *
      * @constructor
@@ -53,6 +53,58 @@ define(['jquery', 'fastclick'], function ($, fastclick) {
         $(document).on('click', this.footer, function () {
             var url = $(this).find('a').data('url');
             window.location.replace(url);
+        });
+        return this;
+    };
+    /**
+     *
+     * @returns {Common}
+     */
+    Common.prototype.ajaxExtend = function () {
+        var _this = this;
+        $(document)
+            .ajaxSend(function (event, xhr, options) {
+                var ajaxBox = options.$renderContainer;
+                options.ajaxBox = ajaxBox;
+                _this.showLoading(ajaxBox);
+
+                console.log('AJAX_SEND');
+            })
+            .ajaxSuccess(function (event, xhr, options, data) {
+                if (!_this.ajaxDataIsExist(data)) {
+                    var ajaxBox = options.ajaxBox;
+                    _this.showNoData(ajaxBox);
+                }
+                console.log('AJAX_SUCCESS');
+            })
+            .ajaxError(function (event, xhr, options) {
+                var ajaxBox = options.ajaxBox;
+                _this.hideLoading(ajaxBox);
+                var toast = new Toast();
+                toast.show(toast.ERROR, '加载失败');
+                toast = null;
+                console.log('AJAX_ERROR');
+            })
+            .ajaxComplete(function (event, xhr, options) {
+                var ajaxBox = options.ajaxBox;
+                _this.hideLoading(ajaxBox);
+                console.log("AJAX_COMPLETE");
+            });
+        return this;
+    };
+    /**
+     *
+     * @returns {Common}
+     */
+    Common.prototype.ajaxInitDefault = function () {
+        $.ajaxSetup({
+            ERR_NO: 0,
+            SUCCESS_NO: 200,
+            timeout: 20000,
+            type: 'POST',
+            dataType: 'JSON',
+            processData: false,
+            contentType: 'application/x-www-form-urlencoded'
         });
         return this;
     };

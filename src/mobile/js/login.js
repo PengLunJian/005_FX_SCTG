@@ -2,8 +2,8 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer'], functio
 
     function LoginPage() {
         var arguments = arguments.length ? arguments[0] : arguments;
-        this.phone = arguments['phone'] ? arguments['phone'] : '#phone';
         this.code = arguments['code'] ? arguments['code'] : '#code';
+        this.tell = arguments['tell'] ? arguments['tell'] : '#tell';
         this.btnCode = arguments['btnCode'] ? arguments['btnCode'] : '.btn-code';
         this.btnStart = arguments['btnStart'] ? arguments['btnStart'] : '.btn-start';
         this.btnLogin = arguments['btnLogin'] ? arguments['btnLogin'] : '.btn-login';
@@ -31,13 +31,31 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer'], functio
         return this;
     };
 
-    LoginPage.prototype.checkNotEmpty = function () {
+    LoginPage.prototype.checkTellNotEmpty = function () {
         var result = false;
         var toast = new Toast();
-        if (!$(this.phone).val().trim()) {
+        var regExpTell = /^1\d{10}$/;
+        var tell = $(this.tell).val().trim();
+        if (!tell) {
             toast.show(toast.INFORMATION, '非空输入');
-        } else if (!$(this.code).val().trim()) {
+        } else if (!regExpTell.test(tell)) {
+            toast.show(toast.WARNING, '输入有误');
+        } else {
+            result = true;
+        }
+        toast = null;
+        return result;
+    };
+
+    LoginPage.prototype.checkCodeNotEmpty = function () {
+        var result = false;
+        var toast = new Toast();
+        var regExpCode = /^\d{4}$/;
+        var code = $(this.code).val().trim();
+        if (!code) {
             toast.show(toast.INFORMATION, '非空输入');
+        } else if (!regExpCode.test(code)) {
+            toast.show(toast.WARNING, '输入有误');
         } else {
             result = true;
         }
@@ -55,19 +73,16 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer'], functio
 
     LoginPage.prototype.exeAjaxRequestCode = function () {
         var _this = this;
-        var toast = new Toast();
         $(document).on('click', this.btnCode, function () {
-            if (!$(_this.phone).val().trim()) {
-                toast.show(toast.INFORMATION, '非空输入');
-                return;
-            }
-            if (!$(this).hasClass('disabled')) {
-                new Timer({
-                    seconds: 5,
-                    selector: _this.btnCode,
-                    callback: function () {
-                    }
-                });
+            if (_this.checkTellNotEmpty()) {
+                if (!$(this).hasClass('disabled')) {
+                    new Timer({
+                        seconds: 60,
+                        selector: _this.btnCode,
+                        callback: function () {
+                        }
+                    });
+                }
             }
         });
         return this;
@@ -81,9 +96,11 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer'], functio
     LoginPage.prototype.exeAjaxRequestLogin = function () {
         var _this = this;
         $(document).on('click', this.btnLogin, function () {
-            if (_this.checkNotEmpty()) {
-                if (_this.ajaxRequestLogin()) {
-                    _this.saveToSessionStorage();
+            if (_this.checkTellNotEmpty()) {
+                if (_this.checkCodeNotEmpty()) {
+                    if (_this.ajaxRequestLogin()) {
+                        _this.saveToSessionStorage();
+                    }
                 }
             }
         });

@@ -27,7 +27,9 @@ define(['jquery'], function ($) {
     Timer.prototype.startTimer = function () {
         var _this = this;
         $(_this.selector).addClass(_this.disabled);
+        $(_this.selector).text(_this.seconds + 's');
         this.timer = setTimeout(function () {
+            _this.seconds--;
             $(_this.selector).text(_this.seconds + 's');
             _this.startTimer();
             if (_this.seconds <= 0) {
@@ -38,7 +40,6 @@ define(['jquery'], function ($) {
                 }
                 clearInterval(_this.timer);
             }
-            _this.seconds--;
         }, 1000);
         return this;
     };
