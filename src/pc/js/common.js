@@ -36,15 +36,13 @@ define(['jquery', 'bootstrap', 'MessageBox', 'Toast', 'bootstrapDateTimePicker',
         this.NO_DATA_HTML = arguments['NO_DATA_HTML'] ? arguments['NO_DATA_HTML']
             : '<div class="common__ajaxBox noData"><img src="../images/noData.png"/></div>';
 
-        this.init();
-
-        console.log('对于我的颜值 只想用一句话来形容 我都想操了我自己！');
+        this.constructor();
     };
     /**
      *
      * @returns {Common}
      */
-    Common.prototype.init = function () {
+    Common.prototype.constructor = function () {
         this.checkUser();
         this.ajaxInitDefault();
         this.ajaxExtend();

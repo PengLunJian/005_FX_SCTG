@@ -8,16 +8,35 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper'], function ($, co
     };
 
     HomePage.prototype.constructor = function () {
-        this.initSwiper();
+        this.initBannerSwiper();
+        this.initHospitalSwiper();
+        this.initDoctorSwiper();
     };
 
-    HomePage.prototype.initSwiper = function () {
-        this.swiper = new swiper('.swiper-container', {
+    HomePage.prototype.initBannerSwiper = function () {
+        this.swiper = new swiper('#banner', {
             autoplay: 3000,
             loop: true,
             autoplayDisableOnInteraction: false,
             pagination: '.swiper-pagination'
-        })
+        });
+        return this;
+    };
+
+    HomePage.prototype.initHospitalSwiper = function () {
+        this.swiper = new swiper('#hospital', {
+            freeMode: true,
+            slidesPerView: 'auto'
+        });
+        return this;
+    };
+
+    HomePage.prototype.initDoctorSwiper = function () {
+        this.swiper = new swiper('#doctor', {
+            freeMode: true,
+            slidesPerView: 'auto'
+        });
+        return this;
     };
 
     new HomePage();
