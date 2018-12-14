@@ -1,4 +1,4 @@
-define(['jquery', 'fastclick', 'Toast'], function ($, fastclick, Toast) {
+define(['jquery', 'fastclick', 'Toast', 'Plugin'], function ($, fastclick, Toast, Plugin) {
     /**
      *
      * @constructor
@@ -19,6 +19,8 @@ define(['jquery', 'fastclick', 'Toast'], function ($, fastclick, Toast) {
         this.setFontSize();
         this.initFastClick();
         this.clickFooterItem();
+        this.ajaxExtend();
+        this.ajaxInitDefault();
         return this;
     }
     /**
@@ -32,8 +34,6 @@ define(['jquery', 'fastclick', 'Toast'], function ($, fastclick, Toast) {
         $(window).resize(function () {
             var iFontSize = $(window).width() / 3.75 + 'px';
             $(_this.element).css('fontSize', iFontSize);
-        });
-        document.body.addEventListener('touchstart', function () {
         });
         return this;
     };
@@ -62,32 +62,32 @@ define(['jquery', 'fastclick', 'Toast'], function ($, fastclick, Toast) {
      */
     Common.prototype.ajaxExtend = function () {
         var _this = this;
+        var plugin = new Plugin();
         $(document)
             .ajaxSend(function (event, xhr, options) {
+                plugin.showLoading();
                 var ajaxBox = options.$renderContainer;
                 options.ajaxBox = ajaxBox;
-                _this.showLoading(ajaxBox);
 
                 console.log('AJAX_SEND');
             })
             .ajaxSuccess(function (event, xhr, options, data) {
                 if (!_this.ajaxDataIsExist(data)) {
                     var ajaxBox = options.ajaxBox;
-                    _this.showNoData(ajaxBox);
                 }
                 console.log('AJAX_SUCCESS');
             })
             .ajaxError(function (event, xhr, options) {
                 var ajaxBox = options.ajaxBox;
-                _this.hideLoading(ajaxBox);
                 var toast = new Toast();
                 toast.show(toast.ERROR, '加载失败');
                 toast = null;
                 console.log('AJAX_ERROR');
             })
             .ajaxComplete(function (event, xhr, options) {
-                var ajaxBox = options.ajaxBox;
-                _this.hideLoading(ajaxBox);
+                setTimeout(function () {
+                    plugin.hideLoading();
+                }, 300);
                 console.log("AJAX_COMPLETE");
             });
         return this;
@@ -98,13 +98,13 @@ define(['jquery', 'fastclick', 'Toast'], function ($, fastclick, Toast) {
      */
     Common.prototype.ajaxInitDefault = function () {
         $.ajaxSetup({
-            ERR_NO: 0,
+            ERROR_NO: 0,
             SUCCESS_NO: 200,
-            timeout: 20000,
             type: 'POST',
+            timeout: 20000,
             dataType: 'JSON',
-            processData: false,
-            contentType: 'application/x-www-form-urlencoded'
+            processData: true,
+            contentType: 'application/json'
         });
         return this;
     };

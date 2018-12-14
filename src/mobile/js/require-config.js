@@ -7,8 +7,10 @@ require.config({
         echarts: 'libs/echarts/echarts.min',
         fastclick: 'libs/fastclick/fastclick',
         swiper: 'libs/swiper/swiper.min',
+        apiMain: 'js/apiMain',
         Toast: 'js/toast',
-        Timer: 'js/timer'
+        Timer: 'js/timer',
+        Plugin: 'js/plugin'
     },
     shim: {
         bootstrap: {

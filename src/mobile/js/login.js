@@ -1,4 +1,4 @@
-require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer'], function ($, common, template, fastclick, Toast, Timer) {
+require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain'], function ($, common, template, fastclick, Toast, Timer, apiMain) {
 
     function LoginPage() {
         var arguments = arguments.length ? arguments[0] : arguments;
@@ -68,6 +68,19 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer'], functio
     };
 
     LoginPage.prototype.ajaxRequestCode = function () {
+        $.ajax({
+            url: apiMain.getUrl('sendSms'),
+            data: apiMain.getParams({
+                Value: $(this.tell).val().trim()
+            }),
+            success: function (data) {
+                if (data.code !== this.ERROR_NO) {
+
+                } else {
+
+                }
+            }
+        });
         return this;
     };
 
@@ -76,10 +89,12 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer'], functio
         $(document).on('click', this.btnCode, function () {
             if (_this.checkTellNotEmpty()) {
                 if (!$(this).hasClass('disabled')) {
+                    _this.ajaxRequestCode();
                     new Timer({
-                        seconds: 60,
+                        seconds: 5,
                         selector: _this.btnCode,
                         callback: function () {
+                            console.log('倒计时完成');
                         }
                     });
                 }
