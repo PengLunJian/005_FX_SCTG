@@ -1,4 +1,4 @@
-define(['jquery', 'fastclick', 'Toast', 'Plugin'], function ($, fastclick, Toast, Plugin) {
+define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastclick, Toast, Plugin, apiMain) {
     /**
      *
      * @constructor
@@ -19,8 +19,9 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin'], function ($, fastclick, Toast
         this.setFontSize();
         this.initFastClick();
         this.clickFooterItem();
-        this.ajaxExtend();
         this.ajaxInitDefault();
+        this.ajaxExtend();
+        this.exeAjaxRequestDeviceId();
         return this;
     }
     /**
@@ -78,17 +79,20 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin'], function ($, fastclick, Toast
                 console.log('AJAX_SUCCESS');
             })
             .ajaxError(function (event, xhr, options) {
-                var ajaxBox = options.ajaxBox;
-                var toast = new Toast();
-                toast.show(toast.ERROR, '加载失败');
-                toast = null;
-                console.log('AJAX_ERROR');
+                console.log(2);
+                setTimeout(function () {
+                    var ajaxBox = options.ajaxBox;
+                    var toast = new Toast();
+                    toast.show(toast.ERROR, '加载失败');
+                    toast = null;
+                    console.log('AJAX_ERROR');
+                }, 1000);
             })
             .ajaxComplete(function (event, xhr, options) {
                 setTimeout(function () {
                     plugin.hideLoading();
-                }, 300);
-                console.log("AJAX_COMPLETE");
+                    console.log("AJAX_COMPLETE");
+                }, 1000);
             });
         return this;
     };
@@ -110,7 +114,29 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin'], function ($, fastclick, Toast
     };
     /**
      *
-     * @type {Common}
+     * @returns {Common}
      */
-    var common = new Common();
+    Common.prototype.ajaxRequestDeviceId = function () {
+        $.ajax({
+            url: apiMain.getUrl('deviceId'),
+            success: function (data) {
+                if (data.code !== this.ERROR_NO) {
+
+                } else {
+
+                }
+            }
+        });
+        return this;
+    };
+    /**
+     *
+     * @returns {Common}
+     */
+    Common.prototype.exeAjaxRequestDeviceId = function () {
+        this.ajaxRequestDeviceId();
+        return this;
+    };
+
+    return new Common();
 });

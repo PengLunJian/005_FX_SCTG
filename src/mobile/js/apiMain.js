@@ -1,6 +1,6 @@
 define(['jquery'], function ($) {
     var apis = {
-        root: 'UserCenter/v1/',
+        root: '/UserCenter/v1/',
         deviceId: {
             url: 'refresh/did'
         },
@@ -24,9 +24,8 @@ define(['jquery'], function ($) {
         },
         getParams: function () {
             var data = '';
-            var args = arguments.length ? arguments[0] : arguments;
-            for (var key in args) {
-                data += key + '=' + args[key] + '&';
+            for (var key in arguments[0]) {
+                data += key + '=' + arguments[0][key] + '&';
             }
             return data.substring(0, data.length - 1);
         }

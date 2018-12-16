@@ -1,5 +1,8 @@
 require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain'], function ($, common, template, fastclick, Toast, Timer, apiMain) {
-
+    /**
+     *
+     * @constructor
+     */
     function LoginPage() {
         var arguments = arguments.length ? arguments[0] : arguments;
         this.code = arguments['code'] ? arguments['code'] : '#code';
@@ -10,12 +13,19 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain
 
         this.constructor();
     };
-
+    /**
+     *
+     * @returns {LoginPage}
+     */
     LoginPage.prototype.constructor = function () {
         this.exeAjaxRequestCode();
         this.exeAjaxRequestLogin();
+        return this;
     };
-
+    /**
+     *
+     * @returns {LoginPage}
+     */
     LoginPage.prototype.startTimer = function () {
         var _this = this;
         var initTime = 10;
@@ -30,7 +40,10 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain
         });
         return this;
     };
-
+    /**
+     *
+     * @returns {boolean}
+     */
     LoginPage.prototype.checkTellNotEmpty = function () {
         var result = false;
         var toast = new Toast();
@@ -46,7 +59,10 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain
         toast = null;
         return result;
     };
-
+    /**
+     *
+     * @returns {boolean}
+     */
     LoginPage.prototype.checkCodeNotEmpty = function () {
         var result = false;
         var toast = new Toast();
@@ -62,11 +78,17 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain
         toast = null;
         return result;
     };
-
+    /**
+     *
+     * @returns {LoginPage}
+     */
     LoginPage.prototype.saveToSessionStorage = function () {
         return this;
     };
-
+    /**
+     *
+     * @returns {LoginPage}
+     */
     LoginPage.prototype.ajaxRequestCode = function () {
         $.ajax({
             url: apiMain.getUrl('sendSms'),
@@ -83,7 +105,10 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain
         });
         return this;
     };
-
+    /**
+     *
+     * @returns {LoginPage}
+     */
     LoginPage.prototype.exeAjaxRequestCode = function () {
         var _this = this;
         $(document).on('click', this.btnCode, function () {
@@ -102,12 +127,34 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain
         });
         return this;
     };
-
+    /**
+     *
+     * @returns {boolean}
+     */
     LoginPage.prototype.ajaxRequestLogin = function () {
         var result = false;
+        $.ajax({
+            url: apiMain.getUrl('smsLogin'),
+            data: apiMain.getParams({
+                MobilePhone: $(this.tell).val().trim(),
+                SMSVerificationCode: $(this.code).val().trim(),
+                TraceMark: '活动跟踪码',
+                Channel: '手机登录'
+            }),
+            success: function (data) {
+                if (data.code !== this.ERROR_NO) {
+
+                } else {
+
+                }
+            }
+        });
         return result;
     };
-
+    /**
+     *
+     * @returns {LoginPage}
+     */
     LoginPage.prototype.exeAjaxRequestLogin = function () {
         var _this = this;
         $(document).on('click', this.btnLogin, function () {
@@ -119,6 +166,7 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain
                 }
             }
         });
+        return this;
     };
 
     new LoginPage();
