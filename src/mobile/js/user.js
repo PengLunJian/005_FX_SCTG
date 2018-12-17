@@ -7,6 +7,12 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper'], function ($, co
     };
 
     UserPage.prototype.constructor = function () {
+        this.renderTemplate();
+        return this;
+    };
+
+    UserPage.prototype.renderTemplate = function () {
+        return this;
     };
 
     new UserPage();

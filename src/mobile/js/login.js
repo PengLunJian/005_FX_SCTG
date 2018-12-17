@@ -80,9 +80,18 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain
     };
     /**
      *
+     * @param pramas
      * @returns {LoginPage}
      */
-    LoginPage.prototype.saveToSessionStorage = function () {
+    LoginPage.prototype.saveToSessionStorage = function (params) {
+        var data = params.data || {};
+        sessionStorage.setItem('NickName', data.NickName);
+        sessionStorage.setItem('PhoneNumber', data.PhoneNumber);
+        sessionStorage.setItem('AccessToken', 'Bearer ' + data.AccessToken);
+        setTimeout(function () {
+            var html = sessionStorage.getItem('html') || '/app/index.html';
+            window.location.replace(html);
+        }, 1000);
         return this;
     };
     /**
@@ -90,17 +99,20 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain
      * @returns {LoginPage}
      */
     LoginPage.prototype.ajaxRequestCode = function () {
-        $.ajax({
+        common.$ajax({
             url: apiMain.getUrl('sendSms'),
             data: apiMain.getParams({
                 Value: $(this.tell).val().trim()
             }),
             success: function (data) {
-                if (data.code !== this.ERROR_NO) {
-
+                data = data || {};
+                var toast = new Toast();
+                if (data.success) {
+                    toast.show(toast.SUCCESS, '发送成功');
                 } else {
-
+                    toast.show(toast.ERROR, '发送失败');
                 }
+                toast = null;
             }
         });
         return this;
@@ -116,7 +128,7 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain
                 if (!$(this).hasClass('disabled')) {
                     _this.ajaxRequestCode();
                     new Timer({
-                        seconds: 5,
+                        seconds: 60,
                         selector: _this.btnCode,
                         callback: function () {
                             console.log('倒计时完成');
@@ -129,11 +141,11 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain
     };
     /**
      *
-     * @returns {boolean}
+     * @returns {LoginPage}
      */
     LoginPage.prototype.ajaxRequestLogin = function () {
-        var result = false;
-        $.ajax({
+        var _this = this;
+        common.$ajax({
             url: apiMain.getUrl('smsLogin'),
             data: apiMain.getParams({
                 MobilePhone: $(this.tell).val().trim(),
@@ -142,14 +154,18 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain
                 Channel: '手机登录'
             }),
             success: function (data) {
-                if (data.code !== this.ERROR_NO) {
-
+                data = data || {};
+                var toast = new Toast();
+                if (data.success) {
+                    toast.show(toast.SUCCESS, '登录成功');
+                    _this.saveToSessionStorage(data);
                 } else {
-
+                    toast.show(toast.ERROR, '登录失败');
                 }
+                toast = null;
             }
         });
-        return result;
+        return this;
     };
     /**
      *
@@ -160,9 +176,7 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain
         $(document).on('click', this.btnLogin, function () {
             if (_this.checkTellNotEmpty()) {
                 if (_this.checkCodeNotEmpty()) {
-                    if (_this.ajaxRequestLogin()) {
-                        _this.saveToSessionStorage();
-                    }
+                    _this.ajaxRequestLogin();
                 }
             }
         });

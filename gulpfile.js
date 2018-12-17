@@ -149,7 +149,7 @@ gulp.task('server', function () {
         middleware: function (connect, opt) {
             return [
                 proxy('/UserCenter/', {
-                    target: 'http://192.168.1.196',
+                    target: 'http://192.168.1.192',
                     changeOrigin: true
                 })
             ];

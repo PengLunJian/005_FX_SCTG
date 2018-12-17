@@ -7,6 +7,7 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
         var arguments = arguments.length !== 0 ? arguments[0] : arguments;
         this.element = arguments['element'] ? arguments['element'] : 'html';
         this.footer = arguments['footer'] ? arguments['footer'] : '.footer-item';
+        this.offsetTime = arguments['offsetTime'] ? arguments['offsetTime'] : 1000;
 
         this.constructor();
     }
@@ -16,11 +17,11 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
      * @returns {Common}
      */
     Common.prototype.constructor = function () {
+        this.ajaxConfig();
+        this.ajaxExtend();
         this.setFontSize();
         this.initFastClick();
         this.clickFooterItem();
-        this.ajaxInitDefault();
-        this.ajaxExtend();
         this.exeAjaxRequestDeviceId();
         return this;
     }
@@ -67,32 +68,33 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
         $(document)
             .ajaxSend(function (event, xhr, options) {
                 plugin.showLoading();
+                var AccessToken = sessionStorage.getItem('AccessToken');
+                xhr.setRequestHeader('Authorization', AccessToken);
                 var ajaxBox = options.$renderContainer;
                 options.ajaxBox = ajaxBox;
 
                 console.log('AJAX_SEND');
             })
             .ajaxSuccess(function (event, xhr, options, data) {
-                if (!_this.ajaxDataIsExist(data)) {
-                    var ajaxBox = options.ajaxBox;
-                }
-                console.log('AJAX_SUCCESS');
+                setTimeout(function () {
+                    plugin.hideLoading();
+                    console.log('AJAX_SUCCESS');
+                }, _this.offsetTime);
             })
             .ajaxError(function (event, xhr, options) {
-                console.log(2);
                 setTimeout(function () {
                     var ajaxBox = options.ajaxBox;
                     var toast = new Toast();
                     toast.show(toast.ERROR, '加载失败');
                     toast = null;
                     console.log('AJAX_ERROR');
-                }, 1000);
+                }, _this.offsetTime);
             })
             .ajaxComplete(function (event, xhr, options) {
                 setTimeout(function () {
                     plugin.hideLoading();
                     console.log("AJAX_COMPLETE");
-                }, 1000);
+                }, _this.offsetTime);
             });
         return this;
     };
@@ -100,15 +102,13 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
      *
      * @returns {Common}
      */
-    Common.prototype.ajaxInitDefault = function () {
+    Common.prototype.ajaxConfig = function () {
         $.ajaxSetup({
-            ERROR_NO: 0,
-            SUCCESS_NO: 200,
             type: 'POST',
             timeout: 20000,
             dataType: 'JSON',
             processData: true,
-            contentType: 'application/json'
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
         });
         return this;
     };
@@ -117,16 +117,21 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
      * @returns {Common}
      */
     Common.prototype.ajaxRequestDeviceId = function () {
-        $.ajax({
+        this.$ajax({
             url: apiMain.getUrl('deviceId'),
             success: function (data) {
-                if (data.code !== this.ERROR_NO) {
-
+                data = data || {};
+                var toast = new Toast();
+                var AccessToken = 'Bearer ' + data.data;
+                if (data.success) {
+                    toast.show(toast.SUCCESS, '加载成功');
+                    sessionStorage.setItem('AccessToken', AccessToken);
                 } else {
-
+                    toast.show(toast.ERROR, '加载失败');
                 }
+                toast = null;
             }
-        });
+        })
         return this;
     };
     /**
@@ -134,7 +139,28 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
      * @returns {Common}
      */
     Common.prototype.exeAjaxRequestDeviceId = function () {
-        this.ajaxRequestDeviceId();
+        var AccessToken = sessionStorage.getItem('AccessToken');
+        if (!AccessToken) {
+            this.ajaxRequestDeviceId();
+        }
+        return this;
+    };
+    /**
+     *
+     * @param params
+     * @returns {Common}
+     */
+    Common.prototype.$ajax = function (params) {
+        var _this = this;
+        $.ajax({
+            url: params.url,
+            data: params.data,
+            success: function (data) {
+                setTimeout(function () {
+                    params.success(data);
+                }, _this.offsetTime);
+            }
+        })
         return this;
     };
 

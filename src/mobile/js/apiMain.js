@@ -23,11 +23,12 @@ define(['jquery'], function ($) {
             return this.root + this[api].url;
         },
         getParams: function () {
-            var data = '';
-            for (var key in arguments[0]) {
-                data += key + '=' + arguments[0][key] + '&';
-            }
-            return data.substring(0, data.length - 1);
+            // var data = '';
+            // for (var key in arguments[0]) {
+            //     data += key + '=' + arguments[0][key] + '&';
+            // }
+            // return data.substring(0, data.length - 1);
+            return arguments[0];
         }
     };
 
