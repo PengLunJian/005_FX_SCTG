@@ -1,6 +1,6 @@
-define(['jquery'], function ($) {
+define(['jquery', 'Host'], function ($, Host) {
     var apis = {
-        root: '/UserCenter/v1/',
+        baseUrl: '/UserCenter/v1/',
         deviceId: {
             url: 'refresh/did'
         },
@@ -20,7 +20,8 @@ define(['jquery'], function ($) {
             }
         },
         getUrl: function (api) {
-            return this.root + this[api].url;
+            var url = Host.HOST_PUB + this.baseUrl;
+            return url + this[api].url;
         },
         getParams: function () {
             // var data = '';

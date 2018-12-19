@@ -105,7 +105,7 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
     Common.prototype.ajaxConfig = function () {
         $.ajaxSetup({
             type: 'POST',
-            timeout: 20000,
+            timeout: 5000,
             dataType: 'JSON',
             processData: true,
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8'

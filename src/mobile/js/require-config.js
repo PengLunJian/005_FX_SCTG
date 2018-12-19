@@ -10,7 +10,8 @@ require.config({
         apiMain: 'js/apiMain',
         Toast: 'js/toast',
         Timer: 'js/timer',
-        Plugin: 'js/plugin'
+        Plugin: 'js/plugin',
+        Host: 'js/host'
     },
     shim: {
         bootstrap: {
