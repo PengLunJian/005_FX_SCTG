@@ -101,129 +101,11 @@
         </div>
         <div class="group module">
             <h2 class="group-title">~~热门科室~~</h2>
-            <div class="group-inner row">
-                <div class="swiper-container" id="hospital">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="group-item">
-                                <a href="/" target="_self">
-                                    <div class="item-img">
-                                        <img src="../images/hospital01.jpg"/>
-                                    </div>
-                                    <div class="item-info">
-                                        <h3 class="item-title ellipsis">临海市中医院</h3>
-                                        <div class="item-type">类型：<em>二级甲等</em></div>
-                                        <div class="item-desc ellipsis">特色科室：谢娟娟门诊(专家)</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="group-item">
-                                <a href="/" target="_self">
-                                    <div class="item-img">
-                                        <img src="../images/hospital02.png"/>
-                                    </div>
-                                    <div class="item-info">
-                                        <h3 class="item-title ellipsis">台州市立医院</h3>
-                                        <div class="item-type">类型：<em>三级乙等</em></div>
-                                        <div class="item-desc ellipsis">特色科室：儿科(专家)</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="group-item">
-                                <a href="/" target="_self">
-                                    <div class="item-img">
-                                        <img src="../images/hospital02.jpg"/>
-                                    </div>
-                                    <div class="item-info">
-                                        <h3 class="item-title ellipsis">天台县中医院</h3>
-                                        <div class="item-type">类型：<em>二级甲等</em></div>
-                                        <div class="item-desc ellipsis">特色科室：中医馆专家正</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="group-item">
-                                <a href="/" target="_self">
-                                    <div class="item-img">
-                                        <img src="../images/hospital03.jpg"/>
-                                    </div>
-                                    <div class="item-info">
-                                        <h3 class="item-title ellipsis">玉环市第二人民医院</h3>
-                                        <div class="item-type">类型：<em>二级甲等</em></div>
-                                        <div class="item-desc ellipsis">特色科室：中医妇科</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="group-inner hospital row" id="tpl_HOT_HOSPITAL"></div>
         </div>
         <div class="group module">
             <h2 class="group-title">~~热门医生~~</h2>
-            <div class="group-inner doctor row">
-                <div class="swiper-container" id="doctor">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="group-item">
-                                <a href="/" target="_self">
-                                    <div class="item-img">
-                                        <img src="../images/doctor01.jpg"/>
-                                    </div>
-                                    <div class="item-info">
-                                        <h3 class="item-title">陈静</h3>
-                                        <div class="item-desc ellipsis">中医科专(副) 副主任医师</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="group-item">
-                                <a href="/" target="_self">
-                                    <div class="item-img">
-                                        <img src="../images/doctor02.jpg"/>
-                                    </div>
-                                    <div class="item-info">
-                                        <h3 class="item-title">谢娟娟</h3>
-                                        <div class="item-desc ellipsis">谢娟娟门诊(专家)  副主任医生</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="group-item">
-                                <a href="/" target="_self">
-                                    <div class="item-img">
-                                        <img src="../images/doctor03.jpg"/>
-                                    </div>
-                                    <div class="item-info">
-                                        <h3 class="item-title">谷英敏</h3>
-                                        <div class="item-desc ellipsis">中医科门诊  副主任中药师</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="group-item">
-                                <a href="/" target="_self">
-                                    <div class="item-img">
-                                        <img src="../images/doctor04.jpg"/>
-                                    </div>
-                                    <div class="item-info">
-                                        <h3 class="item-title">吴一华</h3>
-                                        <div class="item-desc ellipsis">中医科妇科(普通)  副主任中医</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="group-inner doctor row" id="tpl_HOT_DOCTOR"></div>
         </div>
     </div>
     <div id="footer">
@@ -251,6 +133,128 @@
         </ul>
     </div>
 </div>
+
+<script id="tpl-HOT-HOSPITAL" type="text/html">
+    <div class="swiper-container" id="hospital">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="group-item">
+                    <a href="/" target="_self">
+                        <div class="item-img">
+                            <img src="../images/hospital01.jpg"/>
+                        </div>
+                        <div class="item-info">
+                            <h3 class="item-title ellipsis">临海市中医院</h3>
+                            <div class="item-type">类型：<em>二级甲等</em></div>
+                            <div class="item-desc ellipsis">特色科室：谢娟娟门诊(专家)</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="group-item">
+                    <a href="/" target="_self">
+                        <div class="item-img">
+                            <img src="../images/hospital02.png"/>
+                        </div>
+                        <div class="item-info">
+                            <h3 class="item-title ellipsis">台州市立医院</h3>
+                            <div class="item-type">类型：<em>三级乙等</em></div>
+                            <div class="item-desc ellipsis">特色科室：儿科(专家)</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="group-item">
+                    <a href="/" target="_self">
+                        <div class="item-img">
+                            <img src="../images/hospital02.jpg"/>
+                        </div>
+                        <div class="item-info">
+                            <h3 class="item-title ellipsis">天台县中医院</h3>
+                            <div class="item-type">类型：<em>二级甲等</em></div>
+                            <div class="item-desc ellipsis">特色科室：中医馆专家正</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="group-item">
+                    <a href="/" target="_self">
+                        <div class="item-img">
+                            <img src="../images/hospital03.jpg"/>
+                        </div>
+                        <div class="item-info">
+                            <h3 class="item-title ellipsis">玉环市第二人民医院</h3>
+                            <div class="item-type">类型：<em>二级甲等</em></div>
+                            <div class="item-desc ellipsis">特色科室：中医妇科</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="tpl-HOT-DOCTOR" type="text/html">
+    <div class="swiper-container" id="doctor">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="group-item">
+                    <a href="/" target="_self">
+                        <div class="item-img">
+                            <img src="../images/doctor01.jpg"/>
+                        </div>
+                        <div class="item-info">
+                            <h3 class="item-title">陈静</h3>
+                            <div class="item-desc ellipsis">中医科专(副) 副主任医师</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="group-item">
+                    <a href="/" target="_self">
+                        <div class="item-img">
+                            <img src="../images/doctor02.jpg"/>
+                        </div>
+                        <div class="item-info">
+                            <h3 class="item-title">谢娟娟</h3>
+                            <div class="item-desc ellipsis">谢娟娟门诊(专家) 副主任医生</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="group-item">
+                    <a href="/" target="_self">
+                        <div class="item-img">
+                            <img src="../images/doctor03.jpg"/>
+                        </div>
+                        <div class="item-info">
+                            <h3 class="item-title">谷英敏</h3>
+                            <div class="item-desc ellipsis">中医科门诊 副主任中药师</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="group-item">
+                    <a href="/" target="_self">
+                        <div class="item-img">
+                            <img src="../images/doctor04.jpg"/>
+                        </div>
+                        <div class="item-info">
+                            <h3 class="item-title">吴一华</h3>
+                            <div class="item-desc ellipsis">中医科妇科(普通) 副主任中医</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
 
 <script type="text/javascript" src="../libs/require/require.js"></script>
 <script type="text/javascript" src="../js/require-config.js"></script>

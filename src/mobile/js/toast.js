@@ -3,6 +3,7 @@ define(['jquery'], function ($) {
         var arguments = arguments.length ? arguments[0] : arguments;
         this.domId = arguments['domId'] ? arguments['domId'] : '';
         this.timer = arguments['timer'] ? arguments['timer'] : null;
+        this.clazz = arguments['clazz'] ? arguments['clazz'] : '.toast';
         this.template = arguments['template'] ? arguments['template'] : '';
         this.ERROR = arguments['ERROR'] ? arguments['ERROR'] : 'icon-error';
         this.WARNING = arguments['template'] ? arguments['template'] : 'icon-warning';
@@ -24,9 +25,9 @@ define(['jquery'], function ($) {
      * @returns {string}
      */
     Toast.prototype.getTemplate = function (type, message) {
-        var clazz = ' ' + type.substring(5, type.length);
+        var clazz = this.clazz.substr(1) + ' ' + type.substring(5, type.length);
         this.domId = 'toast_' + new Date().getTime();
-        this.template = '<div id="' + this.domId + '" class="toast' + clazz + ' hide">'
+        this.template = '<div id="' + this.domId + '" class="' + clazz + ' hide">'
             + '<div class="toast-inner"><i class="toast-icon ' + type + '"></i>'
             + '<p class="toast-text">' + message + '</p></div></div>';
         return this.template;
@@ -39,6 +40,7 @@ define(['jquery'], function ($) {
      */
     Toast.prototype.show = function (type, message) {
         var _this = this;
+        if ($(_this.clazz)[0]) return;
         var template = this.getTemplate(type, message);
         $('body').append(template);
         this.timer = setTimeout(function () {

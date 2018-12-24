@@ -1,22 +1,34 @@
 define(['jquery', 'Host'], function ($, Host) {
     var apis = {
-        baseUrl: '/UserCenter/v1/',
+        baseUrl: '/',
         deviceId: {
-            url: 'refresh/did'
+            url: 'UserCenter/v1/refresh/did'
         },
         sendSms: {
-            url: 'phone/sendSms',
+            url: 'UserCenter/v1/phone/sendSms',
             params: {
                 Value: ''
             }
         },
         smsLogin: {
-            url: 'login/sms',
+            url: 'UserCenter/v1/login/sms',
             params: {
                 SMSVerificationCode: '',
                 TraceMark: '活动跟踪码',
                 Channel: '手机登录',
                 MobilePhone: ''
+            }
+        },
+        hotHospital: {
+            url: 'HisMidBusiness/v1/home/recom/hospital',
+            params: {
+                pageSize: '5'
+            }
+        },
+        hotDoctor: {
+            url: 'HisMidBusiness/v1/home/recom/doctor',
+            params: {
+                pageSize: '5'
             }
         },
         getUrl: function (api) {

@@ -151,6 +151,10 @@ gulp.task('server', function () {
                 proxy('/UserCenter/', {
                     target: 'http://192.168.1.192',
                     changeOrigin: true
+                }),
+                proxy('/HisMidBusiness/', {
+                    target: 'http://192.168.1.192',
+                    changeOrigin: true
                 })
             ];
         }

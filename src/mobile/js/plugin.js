@@ -12,6 +12,13 @@ define(['jquery'], function ($) {
             '<div class="loading hide"><div class="loading-bg"></div><div class="loading-inner">' +
             '<div class="loading-icon"></div><div class="loading-text">加载中...</div></div></div>';
 
+        this.smLoadingTimer = args['smLoadingTimer'] ? args['smLoadingTimer'] : null;
+        this.smLoadingSelector = args['smLoadingSelector'] ? args['smLoadingSelector'] : '.smLoading';
+        this.smLoadingContainer = args['smLoadingContainer'] ? args['smLoadingContainer'] : $('body');
+        this.smLoadingTemplate = args['smLoadingTemplate'] ? args['smLoadingTemplate'] :
+            '<div class="smLoading hide"><div class="smLoading-inner">' +
+            '<div class="smLoading-icon"></div></div></div>';
+
         this.errorTimer = args['errorTimer'] ? args['errorTimer'] : null;
         this.errorSelector = args['errorSelector'] ? args['errorSelector'] : 'error';
         this.errorContainer = args['errorContainer'] ? args['errorContainer'] : $('body');
@@ -42,11 +49,19 @@ define(['jquery'], function ($) {
      */
     Plugin.prototype.showLoading = function () {
         var _this = this;
-        if ($(_this.loadingSelector)[0]) return;
-        this.loadingContainer.append(this.loadingTemplate);
-        this.loadingTimer = setTimeout(function () {
-            $(_this.loadingSelector).removeClass('hide');
-        }, 30);
+        if (arguments.length) {
+            var $ajaxBox = arguments[0];
+            $ajaxBox.html(this.smLoadingTemplate);
+            this.smLoadingTimer = setTimeout(function () {
+                $(_this.smLoadingSelector).removeClass('hide');
+            }, 30);
+        } else {
+            if ($(_this.loadingSelector)[0]) return;
+            this.loadingContainer.append(this.loadingTemplate);
+            this.loadingTimer = setTimeout(function () {
+                $(_this.loadingSelector).removeClass('hide');
+            }, 30);
+        }
         return this;
     };
     /**
@@ -55,10 +70,18 @@ define(['jquery'], function ($) {
      */
     Plugin.prototype.hideLoading = function () {
         var _this = this;
-        $(this.loadingSelector).addClass('hide');
-        this.loadingTimer = setTimeout(function () {
-            $(_this.loadingSelector).remove();
-        }, 300);
+        if (arguments.length) {
+            var $ajaxBox = arguments[0];
+            $ajaxBox.find(this.smLoadingSelector).addClass('hide');
+            this.smLoadingTimer = setTimeout(function () {
+                $(_this.smLoadingSelector).remove('hide');
+            }, 300);
+        } else {
+            $(this.loadingSelector).addClass('hide');
+            this.loadingTimer = setTimeout(function () {
+                $(_this.loadingSelector).remove();
+            }, 300);
+        }
         return this;
     };
     /**

@@ -127,7 +127,9 @@
         padding: 0;
         margin-left: -0.075rem;
         margin-right: -0.075rem;
-        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        .swiper-container {
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
         .swiper-slide {
           width: 50%;
         }
@@ -182,7 +184,15 @@
             }
           }
         }
+        &.hospital {
+          .smLoading {
+            height: 0.74rem;
+          }
+        }
         &.doctor {
+          .smLoading {
+            height: 0.6rem;
+          }
           .item-img {
             width: 24.99%;
             img {

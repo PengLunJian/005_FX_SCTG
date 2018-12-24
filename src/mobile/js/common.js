@@ -70,29 +70,36 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
                 plugin.showLoading();
                 var AccessToken = sessionStorage.getItem('AccessToken');
                 xhr.setRequestHeader('Authorization', AccessToken);
-                var ajaxBox = options.$renderContainer;
-                options.ajaxBox = ajaxBox;
+                var $ajaxBox = options.$renderContainer;
+                if ($ajaxBox) {
+                    plugin.showLoading($ajaxBox);
+                }
 
                 console.log('AJAX_SEND');
             })
             .ajaxSuccess(function (event, xhr, options, data) {
                 setTimeout(function () {
-                    plugin.hideLoading();
+
                     console.log('AJAX_SUCCESS');
                 }, _this.offsetTime);
             })
             .ajaxError(function (event, xhr, options) {
                 setTimeout(function () {
-                    var ajaxBox = options.ajaxBox;
                     var toast = new Toast();
-                    toast.show(toast.ERROR, '加载失败');
+                    toast.show(toast.ERROR, '请求失败');
                     toast = null;
+
                     console.log('AJAX_ERROR');
                 }, _this.offsetTime);
             })
             .ajaxComplete(function (event, xhr, options) {
                 setTimeout(function () {
                     plugin.hideLoading();
+                    var $ajaxBox = options.$renderContainer;
+                    if ($ajaxBox) {
+                        plugin.hideLoading($ajaxBox);
+                    }
+
                     console.log("AJAX_COMPLETE");
                 }, _this.offsetTime);
             });
@@ -111,6 +118,20 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
         });
         return this;
+    };
+    /**
+     *
+     * @param data
+     * @returns {boolean|number|Array}
+     */
+    Common.prototype.ajaxDataIsExist = function (data) {
+        var data = data.data;
+        return ((typeof data === 'string'
+            || (data instanceof Array && data.length)
+            || (!(data instanceof Array)
+                && JSON.stringify(data) !== '{}'
+                && data)
+        ));
     };
     /**
      *
@@ -155,6 +176,7 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
         $.ajax({
             url: params.url,
             data: params.data,
+            $renderContainer: params.$renderContainer,
             success: function (data) {
                 setTimeout(function () {
                     params.success(data);
