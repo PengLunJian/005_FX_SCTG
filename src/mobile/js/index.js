@@ -65,10 +65,12 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper', 'apiMain'], func
             $renderContainer: $('#tpl_HOT_HOSPITAL'),
             success: function (data) {
                 data = data || {};
-                if (!common.ajaxDataIsExist(data)) return;
-                var templateHtml = template('tpl-HOT-HOSPITAL', data);
-                this.$renderContainer.html(templateHtml);
-                _this.initHospitalSwiper();
+                if (data.success) {
+                    if (!common.ajaxDataIsExist(data)) return;
+                    var templateHtml = template('tpl-HOT-HOSPITAL', data);
+                    this.$renderContainer.html(templateHtml);
+                    _this.initHospitalSwiper();
+                }
             }
         });
         return this;

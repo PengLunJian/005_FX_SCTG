@@ -67,18 +67,38 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
         var plugin = new Plugin();
         $(document)
             .ajaxSend(function (event, xhr, options) {
-                plugin.showLoading();
+                plugin.showBigLoading();
                 var AccessToken = sessionStorage.getItem('AccessToken');
                 xhr.setRequestHeader('Authorization', AccessToken);
                 var $ajaxBox = options.$renderContainer;
-                if ($ajaxBox) {
-                    plugin.showLoading($ajaxBox);
-                }
+                if ($ajaxBox) plugin.showSmallLoading($ajaxBox);
+
+                // plugin.showBigLoading();
+                // var token = sessionStorage.sys_access_token;
+                // if (!token || token === 'undefined') {
+                //     token = localStorage.sys_device_id;
+                // }
+                // xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+                // var $ajaxBox = options.$renderContainer;
+                // if ($ajaxBox) plugin.showSmallLoading($ajaxBox);
+                // console.log('AJAX_SEND:' + token);
 
                 console.log('AJAX_SEND');
             })
             .ajaxSuccess(function (event, xhr, options, data) {
                 setTimeout(function () {
+                    data = data || {};
+                    var $ajaxBox = options.$renderContainer;
+                    if (data.success) {
+                        if (!_this.ajaxDataIsExist(data)) {
+                            plugin.showEmpty($ajaxBox);
+                        }
+                    } else {
+                        var toast = new Toast();
+                        toast.show(toast.ERROR, '加载失败');
+                        if ($ajaxBox) plugin.showError($ajaxBox, options);
+                        toast = null;
+                    }
 
                     console.log('AJAX_SUCCESS');
                 }, _this.offsetTime);
@@ -86,7 +106,9 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
             .ajaxError(function (event, xhr, options) {
                 setTimeout(function () {
                     var toast = new Toast();
+                    var $ajaxBox = options.$renderContainer;
                     toast.show(toast.ERROR, '请求失败');
+                    if ($ajaxBox) plugin.showError($ajaxBox, options);
                     toast = null;
 
                     console.log('AJAX_ERROR');
@@ -94,10 +116,10 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
             })
             .ajaxComplete(function (event, xhr, options) {
                 setTimeout(function () {
-                    plugin.hideLoading();
+                    plugin.hideBigLoading();
                     var $ajaxBox = options.$renderContainer;
                     if ($ajaxBox) {
-                        plugin.hideLoading($ajaxBox);
+                        plugin.hideSmallLoading($ajaxBox);
                     }
 
                     console.log("AJAX_COMPLETE");

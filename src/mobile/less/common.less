@@ -253,8 +253,8 @@ input[type="checkbox"].checked, input[type="radio"].checked {
   box-shadow: 0 0 15px rgba(0, 0, 0, .05);
 }
 
-.loading {
-  .loading-bg {
+.bgLoading {
+  .bgLoading-bg {
     position: fixed;
     top: 0;
     left: 0;
@@ -264,7 +264,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     transition: all 300ms ease-out;
     background-color: rgba(0, 0, 0, 0);
   }
-  .loading-inner {
+  .bgLoading-inner {
     width: 1rem;
     height: auto;
     position: fixed;
@@ -279,7 +279,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     transition: all 300ms ease-out;
     background-color: rgba(0, 0, 0, .7);
     text-align: center;
-    .loading-icon {
+    .bgLoading-icon {
       width: 0.4rem;
       height: 0.4rem;
       display: block;
@@ -290,7 +290,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
       animation: loading 1s steps(12, end) infinite;
       background-image: url("../images/loading.svg");
     }
-    .loading-text {
+    .bgLoading-text {
       height: 0.2rem;
       line-height: 0.2rem;
       margin-top: 0.1rem;
@@ -299,11 +299,11 @@ input[type="checkbox"].checked, input[type="radio"].checked {
     }
   }
   &.hide {
-    .loading-bg {
+    .bgLoading-bg {
       opacity: 0;
       visibility: hidden;
     }
-    .loading-inner {
+    .bgLoading-inner {
       opacity: 0;
       visibility: hidden;
     }
@@ -342,15 +342,71 @@ input[type="checkbox"].checked, input[type="radio"].checked {
   }
 }
 
-@keyframes loading {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg)
+.empty {
+  height: 100%;
+  background-color: @transparent;
+  text-align: center;
+  font-size: 0;
+  .empty-inner {
+    display: inline-block;
+    vertical-align: middle;
+    transition: all 300ms ease-out;
+    .empty-icon {
+      font-size: 0.6rem;
+    }
+    .empty-text {
+      font-size: 0;
+    }
   }
+  &:before {
+    content: '';
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  &.hide {
+    .empty-inner {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
 
-  to {
-    -webkit-transform: rotate(1turn);
-    transform: rotate(1turn)
+.error {
+  height: 100%;
+  background-color: @transparent;
+  text-align: center;
+  font-size: 0;
+  .error-inner {
+    display: inline-block;
+    vertical-align: middle;
+    transition: all 300ms ease-out;
+    .error-icon {
+      margin-bottom: 0.1rem;
+      font-size: 0.5rem;
+      color: @error;
+    }
+    .btn-refresh {
+      height: 0.28rem;
+      padding: 0 0.15rem;
+      line-height: 0.26rem;
+      border-radius: 0.28rem;
+      border: 1px solid @error;
+      font-size: 0.13rem;
+      color: @error;
+    }
+  }
+  &:before {
+    content: '';
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  &.hide {
+    .error-inner {
+      opacity: 0;
+      visibility: hidden;
+    }
   }
 }
 
@@ -361,7 +417,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
   z-index: 1000;
   width: 100%;
   height: auto;
-  border-top: 1px solid @borderColor;
+  border-top: @border;
   background-color: @white;
   .footer-inner {
     padding: 0;
@@ -472,5 +528,64 @@ input[type="checkbox"].checked, input[type="radio"].checked {
       visibility: visible;
       background-color: rgba(0, 0, 0, .3)
     }
+  }
+}
+
+.scale {
+  animation: scale 400ms ease-out;
+}
+
+.fade {
+  animation: fade 300ms ease-out;
+  &.hide {
+    animation: fade 300ms ease-out;
+  }
+}
+
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg)
+  }
+
+  to {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn)
+  }
+}
+
+@keyframes scale {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  25% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  9% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

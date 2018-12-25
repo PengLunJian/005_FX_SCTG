@@ -185,14 +185,16 @@
           }
         }
         &.hospital {
-          .smLoading {
-            height: 0.74rem;
+          height: 0.74rem;
+          .empty-icon {
+            font-size: 0.4rem !important;
+          }
+          .error-icon {
+            display: none !important;
           }
         }
         &.doctor {
-          .smLoading {
-            height: 0.6rem;
-          }
+          height: 0.6rem;
           .item-img {
             width: 24.99%;
             img {
@@ -211,6 +213,12 @@
               height: 0.2rem;
               line-height: 0.2rem;
             }
+          }
+          .empty-icon {
+            font-size: 0.4rem !important;
+          }
+          .error-icon {
+            display: none !important;
           }
         }
       }
