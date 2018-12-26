@@ -1,0 +1,65 @@
+@import "variable";
+
+#main {
+  #header {
+
+  }
+  #body {
+    .tab-bar {
+      padding: 0;
+      line-height: 0.45rem;
+      background-color: @white;
+      border-bottom: 1px solid @borderColor;
+      text-align: center;
+      font-size: 0.16rem;
+      .tab-item {
+        position: relative;
+        &.active {
+          color: @activeColor;
+          &:after {
+            animation: tabActive 200ms ease-out;
+          }
+        }
+        &:after {
+          content: '';
+          left: 50%;
+          bottom: 0;
+          width: 1rem;
+          position: absolute;
+          transform: translateX(-50%);
+          animation: tab 200ms ease-out forwards;
+          border-bottom: 0.03rem solid @activeColor;
+        }
+      }
+    }
+  }
+  #footer {
+
+  }
+}
+
+@keyframes tab {
+  0% {
+    width: 1rem;
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes tabActive {
+  0% {
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    width: 1rem;
+    opacity: 1;
+    visibility: visible;
+  }
+}

@@ -61,9 +61,18 @@
         .item-img {
           float: right;
           height: 0.4rem;
+          font-size: 0;
           img {
-            width: auto;
-            height: 0.4rem;
+            width: 0.34rem;
+            height: auto;
+            display: inline-block;
+            vertical-align: middle;
+          }
+          &:before {
+            content: '';
+            height: 100%;
+            display: inline-block;
+            vertical-align: middle;
           }
         }
         .item-info {
