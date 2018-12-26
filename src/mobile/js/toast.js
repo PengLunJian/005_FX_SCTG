@@ -57,6 +57,8 @@ define(['jquery'], function ($) {
         }.bind(this), 300);
         return this;
     };
-
+    /**
+     *
+     */
     return Toast;
 });

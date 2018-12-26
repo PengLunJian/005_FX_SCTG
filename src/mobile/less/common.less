@@ -46,8 +46,8 @@ body {
   font-size: 0.13rem;
   overflow-x: hidden;
   background-color: #f2f2f2;
-  //font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-family: "微软雅黑", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  //font-family: "微软雅黑", Helvetica, Arial, sans-serif;
 }
 
 .hidden {
@@ -73,7 +73,7 @@ select {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-input, textarea {
+input, textarea, button {
   border: none;
   font-size: 0.13rem;
   -webkit-appearance: none;
@@ -287,7 +287,7 @@ input[type="checkbox"].checked, input[type="radio"].checked {
       background-size: 0.3rem auto;
       background-repeat: no-repeat;
       background-position: center center;
-      animation: loading 1s steps(12, end) infinite;
+      animation: rotate 1s steps(12, end) infinite;
       background-image: url("../images/loading.svg");
     }
     .bgLoading-text {
@@ -498,10 +498,6 @@ input[type="checkbox"].checked, input[type="radio"].checked {
       font-size: 0.17rem;
     }
   }
-  &.hide {
-    opacity: 0;
-    visibility: hidden;
-  }
   &.success {
     .toast-icon {
       font-size: 0.3rem;
@@ -538,11 +534,11 @@ input[type="checkbox"].checked, input[type="radio"].checked {
 .fade {
   animation: fade 300ms ease-out;
   &.hide {
-    animation: fade 300ms ease-out;
+    animation: hide 300ms ease-out;
   }
 }
 
-@keyframes loading {
+@keyframes rotate {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg)
@@ -571,9 +567,6 @@ input[type="checkbox"].checked, input[type="radio"].checked {
 
 @keyframes fade {
   0% {
-    opacity: 0;
-  }
-  9% {
     opacity: 0;
   }
   100% {
