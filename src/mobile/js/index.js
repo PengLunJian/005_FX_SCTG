@@ -95,7 +95,9 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper', 'apiMain'], func
         });
         return this;
     };
-
+    /**
+     *
+     */
     new HomePage();
 
 });
