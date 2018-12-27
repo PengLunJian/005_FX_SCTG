@@ -91,7 +91,7 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
                     var $ajaxBox = options.$renderContainer;
                     if (data.success) {
                         if (!_this.ajaxDataIsExist(data)) {
-                            plugin.showEmpty($ajaxBox);
+                            if ($ajaxBox) plugin.showEmpty($ajaxBox);
                         }
                     } else {
                         var toast = new Toast();
@@ -118,9 +118,7 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
                 setTimeout(function () {
                     plugin.hideBigLoading();
                     var $ajaxBox = options.$renderContainer;
-                    if ($ajaxBox) {
-                        plugin.hideSmallLoading($ajaxBox);
-                    }
+                    if ($ajaxBox) plugin.hideSmallLoading($ajaxBox);
 
                     console.log("AJAX_COMPLETE");
                 }, _this.offsetTime);

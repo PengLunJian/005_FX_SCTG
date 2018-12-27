@@ -5,7 +5,6 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper', 'apiMain'], func
      */
     function HomePage() {
         var arguments = arguments.length ? arguments[0] : arguments;
-        this.swiper = arguments['swiper'] ? arguments['swiper'] : null;
 
         this.constructor();
     };
@@ -24,7 +23,7 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper', 'apiMain'], func
      * @returns {HomePage}
      */
     HomePage.prototype.initBannerSwiper = function () {
-        this.swiper = new swiper('#banner', {
+        new swiper('#banner', {
             autoplay: 3000,
             loop: true,
             autoplayDisableOnInteraction: false,
@@ -37,7 +36,7 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper', 'apiMain'], func
      * @returns {HomePage}
      */
     HomePage.prototype.initHospitalSwiper = function () {
-        this.swiper = new swiper('#hospital', {
+        new swiper('#hospital', {
             freeMode: true,
             slidesPerView: 'auto'
         });
@@ -48,7 +47,7 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper', 'apiMain'], func
      * @returns {HomePage}
      */
     HomePage.prototype.initDoctorSwiper = function () {
-        this.swiper = new swiper('#doctor', {
+        new swiper('#doctor', {
             freeMode: true,
             slidesPerView: 'auto'
         });

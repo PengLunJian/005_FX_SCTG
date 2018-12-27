@@ -65,13 +65,30 @@ require(['jquery', 'common', 'template', 'fastclick', 'Toast', 'Timer', 'apiMain
      * @param pramas
      * @returns {LoginPage}
      */
+    // LoginPage.prototype.saveToSessionStorage = function (params) {
+    //     var data = params.data || {};
+    //     sessionStorage.setItem('NickName', data.NickName);
+    //     sessionStorage.setItem('PhoneNumber', data.PhoneNumber);
+    //     sessionStorage.setItem('AccessToken', 'Bearer ' + data.AccessToken);
+    //     setTimeout(function () {
+    //         var html = sessionStorage.getItem('html') || '/app/index.html';
+    //         window.location.replace(html);
+    //     }, 1000);
+    //     return this;
+    // };
+    /**
+     *
+     * @param params
+     * @returns {LoginPage}
+     */
     LoginPage.prototype.saveToSessionStorage = function (params) {
         var data = params.data || {};
-        sessionStorage.setItem('NickName', data.NickName);
-        sessionStorage.setItem('PhoneNumber', data.PhoneNumber);
-        sessionStorage.setItem('AccessToken', 'Bearer ' + data.AccessToken);
+        localStorage.setItem('NickName', data.Profile.NickName);
+        localStorage.setItem('PhoneNumber', data.Profile.PhoneNumber);
+        localStorage.setItem('sys_access_token', data.AccessToken);
+        localStorage.setItem('AccessToken','Bearer '+ data.AccessToken); //http://localhost:5111/home/app/index.html
         setTimeout(function () {
-            var html = sessionStorage.getItem('html') || '/app/index.html';
+            var html = sessionStorage.getItem('html') || 'index.html';
             window.location.replace(html);
         }, 1000);
         return this;

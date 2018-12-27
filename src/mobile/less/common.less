@@ -47,7 +47,6 @@ body {
   overflow-x: hidden;
   background-color: #f2f2f2;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  //font-family: "微软雅黑", Helvetica, Arial, sans-serif;
 }
 
 .hidden {
@@ -312,6 +311,10 @@ input[type="checkbox"].checked, input[type="radio"].checked {
 
 .loading {
   &.big {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 5000;
     .loading-bg {
       position: fixed;
       top: 0;

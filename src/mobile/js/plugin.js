@@ -102,7 +102,7 @@ define(['jquery'], function ($) {
     Plugin.prototype.hideError = function ($ajaxBox) {
         $ajaxBox.find(this.errorSelector).addClass('hide');
         setTimeout(function () {
-            $ajaxBox.find(_this.errorSelector).remove();
+            $ajaxBox.find(this.errorSelector).remove();
         }.bind(this), 300);
         return this;
     };
