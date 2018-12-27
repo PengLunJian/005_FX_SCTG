@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -15,18 +15,40 @@
 </head>
 
 <body>
-<div id="main">
-    <div id="header"></div>
-    <div id="body">
-        <p class="desc">我们懂得聆听，请写下您的建议。请您输入不少于10个字的描述</p>
-        <div class="module">
-            <textarea placeholder="您对健康台州有什么建议？或您在哪家医院遇到了问题，我们会尽快帮您解决"></textarea>
+    <div id="main">
+        <div id="header"></div>
+        <div id="body">
+            <p class="desc">我们懂得聆听，请写下您的建议。请您输入不少于10个字的描述</p>
+            <div class="module">
+                <textarea placeholder="您对健康台州有什么建议？或您在哪家医院遇到了问题，我们会尽快帮您解决"></textarea>
+            </div>
+            <button class="btn confirm">提交</button>
+        </div>
+        <div id="footer">
+            <ul class="footer-inner row">
+                <li class="footer-item col-xs-3">
+                    <a href="index.html" target="_self">
+                        <p class="item-desc">首页</p>
+                    </a>
+                </li>
+                <li class="footer-item col-xs-3">
+                    <a href="information.html" target="_self">
+                        <p class="item-desc">资讯</p>
+                    </a>
+                </li>
+                <li class="footer-item col-xs-3">
+                    <a href="discover.html" target="_self">
+                        <p class="item-desc">发现</p>
+                    </a>
+                </li>
+                <li class="footer-item col-xs-3 active">
+                    <a href="user.html" target="_self">
+                        <p class="item-desc">我的</p>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
-    <div id="footer">
-        <button class="btn confirm">提交</button>
-    </div>
-</div>
 
 <script type="text/javascript" src="../libs/require/require.js"></script>
 <script type="text/javascript" src="../js/require-config.js"></script>

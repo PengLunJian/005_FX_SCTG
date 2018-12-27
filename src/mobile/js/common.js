@@ -208,3 +208,25 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
 
     return new Common();
 });
+
+function gohost(state) {
+    sessionStorage.setItem('back_url', location.href);
+
+    var url;
+    if (state === 'wait') {
+        url = '/JY/app/wait.html';
+    }
+    else if (state === 'context') {
+        url = '/JY/app/context.html';
+    }
+    else {
+        sessionStorage.setItem('jump_url', state);
+        url = '/JY/app/jump.html';
+    }
+    if (localStorage.sys_access_token) {
+        location.href = url;
+    } else {
+        sessionStorage.setItem('html', url);
+        location.href = 'login.html';
+    }
+};

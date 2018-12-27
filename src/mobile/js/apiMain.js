@@ -20,13 +20,13 @@ define(['jquery', 'Host'], function ($, Host) {
             }
         },
         hotHospital: {
-            url: 'HisMidBusiness/v1/home/recom/hospital',
+            url: 'WenRongBusiness/v1/home/recom/hospital',
             params: {
                 pageSize: '5'
             }
         },
         hotDoctor: {
-            url: 'HisMidBusiness/v1/home/recom/doctor',
+            url: 'WenRongBusiness/v1/home/recom/doctor',
             params: {
                 pageSize: '5'
             }

@@ -17,4 +17,8 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper'], function ($, co
 
     new UserPage();
 
+    var name = localStorage.NickName;
+    if (!name)
+        name = 'µÇÂ¼/×¢²á';
+    $('#info_user').text(name);
 });
