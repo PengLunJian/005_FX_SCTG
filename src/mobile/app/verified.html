@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>玢翔健康--实名认证</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/font.css"/>
+    <link rel="stylesheet" type="text/css" href="../libs/LArea/LArea.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/verified.css"/>
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+</head>
+
+<body>
+<div id="app">
+    <div id="header"></div>
+    <div id="body" class="container">
+        <div class="header">
+            <image class="header-bg" src="../images/header-bg.png"></image>
+        </div>
+        <div class="content">
+            <div class="content-msg">信息仅用于实名认证，医院保障您的安全</div>
+            <div class="section">
+                <div class="section-title">姓名</div>
+                <input id="name" class="section-input" v-model="name" maxlength="40" bindchange="bindNameChange" type="text" placeholder="请输入姓名" />
+            </div>
+            <div class="section">
+                <div class="section-title">身份证号码</div>
+                <input id="idCardNum" class="section-input" v-model="idCardNum" maxlength="50" bindchange="bindIdCardNumChange" type="idcard" placeholder="请输入身份证号码" />
+            </div>
+            <div class="section">
+                <div class="section-title">电话号码</div>
+                <input id="phoneNum" class="section-input" v-model="phoneNum" maxlength="20" bindchange="bindPhoneNumChange" type="number" placeholder="请输入电话号码" />
+            </div>
+            <div class="devide-bar"></div>
+            <div class="section">
+                <div class="section-title">所在地区</div>
+                <div class="section-input" mode="region" maxlength="100" bindchange="bindRegionChange">
+                    <input id="demo1" class="section-input" type="text" readonly="" placeholder="城市选择特效"  value="广东省,深圳市,南山区"/>
+                    <input id="value1" type="hidden" value="20,234,504"/>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-title">现在住址</div>
+                <input id="adress" class="section-input" v-model="adress" maxlength="100" bindchange="bindAdressChange" type="text" placeholder="请填写详细住址" />
+            </div>
+        </div>
+        <button class="submit-btn" onclick="startVerified()">开始认证</button>
+    </div>
+    <div id="toast" class="toast-container" style="display:none;"></div>
+</div>
+
+<script type="text/javascript" src="../libs/require/require.js"></script>
+<script type="text/javascript" src="../js/require-config.js"></script>
+<script type="text/javascript" src="../libs/LArea/LAreaData1.js"></script>
+<script type="text/javascript" src="../libs/LArea/LArea.min.js"></script>
+<script type="text/javascript" src="../js/verified.js"></script>
+</body>
+</html>
+

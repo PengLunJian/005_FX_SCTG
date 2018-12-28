@@ -7,6 +7,7 @@ require.config({
         echarts: 'libs/echarts/echarts.min',
         fastclick: 'libs/fastclick/fastclick',
         swiper: 'libs/swiper/swiper.min',
+        LArea: 'libs/LArea/LArea.min',
         apiMain: 'js/apiMain',
         Toast: 'js/toast',
         Timer: 'js/timer',
