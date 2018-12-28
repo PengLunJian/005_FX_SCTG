@@ -1,0 +1,97 @@
+@import "variable";
+
+#main {
+  min-height: 100vh;
+  #header {
+  }
+  #body {
+    .content {
+      padding: 0.1rem;
+      .canves {
+        height: 3.31rem;
+        padding-top: 0.18rem;
+        background-color: @white;
+        border-radius: @borderRadius;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+        text-align: center;
+        font-size: 0;
+        .title {
+          text-align: center;
+          font-size: 0.18rem;
+        }
+        .outside {
+          padding: 0.1rem;
+          position: relative;
+          margin-top: 0.3rem;
+          display: inline-block;
+          &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-image: url('../images/circle@2x.png');
+            animation: rotate 2000ms linear infinite;
+          }
+          .inside {
+            width: 2rem;
+            height: 2rem;
+            overflow: hidden;
+            position: relative;
+            border-radius: 100%;
+            border: 0.5px solid #d6e9fa;
+            .message {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 0.6rem;
+              line-height: 0.6rem;
+              background-color: #666666;
+              text-align: center;
+              font-size: 0.2rem;
+              color: @white;
+            }
+          }
+        }
+      }
+      .desc {
+        padding: 0.1rem 0 0.3rem;
+        .title {
+          line-height: 0.24rem;
+          font-weight: normal;
+          font-size: 0.15rem;
+        }
+        p {
+          line-height: 0.24rem;
+          font-size: 0.15rem;
+        }
+      }
+      .btn-confirm {
+        width: 100%;
+        height: 0.47rem;
+        line-height: 0.47rem;
+        background-color: #5e9bf1;
+        border-radius: @borderRadius;
+        font-size: 0.18rem;
+        color: @white;
+      }
+    }
+  }
+  #footer {
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
