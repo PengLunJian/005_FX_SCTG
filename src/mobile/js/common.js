@@ -1,4 +1,4 @@
-define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastclick, Toast, Plugin, apiMain) {
+define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain', 'Mock'], function ($, fastclick, Toast, Plugin, apiMain, Mock) {
     /**
      *
      * @constructor
@@ -22,7 +22,8 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
         this.setFontSize();
         this.initFastClick();
         this.clickFooterItem();
-        this.exeAjaxRequestDeviceId();
+        this.useMock();
+        // this.exeAjaxRequestDeviceId();
         return this;
     }
     /**
@@ -45,6 +46,33 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
      */
     Common.prototype.initFastClick = function () {
         fastclick.attach(document.body);
+        return this;
+    };
+    /**
+     *
+     * @returns {Common}
+     */
+    Common.prototype.useMock = function () {
+        Mock.setup({
+            timeout: 1000
+        });
+        Mock.mock(apiMain.getUrl('hotHospital'), function () {
+            return {
+                success: false,
+                data: [
+                    {}, {}, {}
+                ]
+            }
+        });
+        Mock.mock(apiMain.getUrl('hotDoctor'), function () {
+            return {
+                success: true,
+                data: [
+                    {}, {}, {},
+                    {}, {}, {}
+                ]
+            }
+        });
         return this;
     };
     /**
@@ -132,7 +160,7 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain'], function ($, fastc
     Common.prototype.ajaxConfig = function () {
         $.ajaxSetup({
             type: 'POST',
-            timeout: 5000,
+            timeout: 20000,
             dataType: 'JSON',
             processData: true,
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8'

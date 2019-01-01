@@ -35,30 +35,7 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper', 'apiMain'], func
      *
      * @returns {HomePage}
      */
-    HomePage.prototype.initHospitalSwiper = function () {
-        new swiper('#hospital', {
-            freeMode: true,
-            slidesPerView: 'auto'
-        });
-        return this;
-    };
-    /**
-     *
-     * @returns {HomePage}
-     */
-    HomePage.prototype.initDoctorSwiper = function () {
-        new swiper('#doctor', {
-            freeMode: true,
-            slidesPerView: 'auto'
-        });
-        return this;
-    };
-    /**
-     *
-     * @returns {HomePage}
-     */
     HomePage.prototype.ajaxRequestHotHospital = function () {
-        var _this = this;
         common.$ajax({
             url: apiMain.getUrl('hotHospital'),
             $renderContainer: $('#tpl_HOT_HOSPITAL'),
@@ -68,7 +45,6 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper', 'apiMain'], func
                     if (!common.ajaxDataIsExist(data)) return;
                     var templateHtml = template('tpl-HOT-HOSPITAL', data);
                     this.$renderContainer.html(templateHtml);
-                    _this.initHospitalSwiper();
                 }
             }
         });
@@ -79,7 +55,6 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper', 'apiMain'], func
      * @returns {HomePage}
      */
     HomePage.prototype.ajaxRequestHotDoctor = function () {
-        var _this = this;
         common.$ajax({
             url: apiMain.getUrl('hotDoctor'),
             $renderContainer: $('#tpl_HOT_DOCTOR'),
@@ -89,7 +64,6 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper', 'apiMain'], func
                     if (!common.ajaxDataIsExist(data)) return;
                     var templateHtml = template('tpl-HOT-DOCTOR', data);
                     this.$renderContainer.html(templateHtml);
-                    _this.initDoctorSwiper();
                 }
             }
         });

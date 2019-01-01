@@ -65,47 +65,71 @@
                 </li>
             </ul>
         </div>
-        <div class="menu module">
+        <div class="menus module">
             <div class="menu-inner row">
                 <div class="menu-item col-xs-6">
-                    <a href="/" target="_self">
-                        <div class="item-info">
-                            <h3 class="item-title">预约记录</h3>
-                            <p class="item-desc">查看过去就诊</p>
-                            <button class="item-button">查看</button>
+                    <a href="#" target="_self">
+                        <div class="item-img">
+                            <img src="../images/menu_icon01.png" alt="预约记录"/>
                         </div>
-                        <img src="../images/doc_femal@2x.png"/>
+                        <div class="item-info">
+                            <h2 class="item-title">预约记录</h2>
+                            <p class="item-desc">查看过去就诊</p>
+                        </div>
                     </a>
                 </div>
                 <div class="menu-item col-xs-6">
-                    <div class="sub-menu col-xs-12">
-                        <a href="/" target="_self">
-                            <div class="item-info">
-                                <h3 class="item-title">先诊疗后付费</h3>
-                                <p class="item-desc">新型支付就诊模式</p>
-                            </div>
-                            <img src="../images/contract@2x.png"/>
-                        </a>
-                    </div>
-                    <div class="sub-menu col-xs-12">
-                        <a href="/" target="_self">
-                            <div class="item-info">
-                                <h3 class="item-title">云卡就诊</h3>
-                                <p class="item-desc">无需带卡扫码就诊</p>
-                            </div>
-                            <img src="../images/identity@2x.png"/>
-                        </a>
-                    </div>
+                    <a href="#" target="_self">
+                        <div class="item-img">
+                            <img src="../images/menu_icon02.png" alt="先诊后付费"/>
+                        </div>
+                        <div class="item-info">
+                            <h2 class="item-title">先诊后付费</h2>
+                            <p class="item-desc">新型支付就诊模式</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="menu-item col-xs-6">
+                    <a href="#" target="_self">
+                        <div class="item-img">
+                            <img src="../images/menu_icon03.png" alt="智能导诊"/>
+                        </div>
+                        <div class="item-info">
+                            <h2 class="item-title">智能导诊</h2>
+                            <p class="item-desc">智能检测身体状况</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="menu-item col-xs-6">
+                    <a href="#" target="_self">
+                        <div class="item-img">
+                            <img src="../images/menu_icon04.png" alt="一码通行"/>
+                        </div>
+                        <div class="item-info">
+                            <h2 class="item-title">一码通行</h2>
+                            <p class="item-desc">无需带卡扫码就诊</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="group module">
-            <h2 class="group-title">~~热门科室~~</h2>
-            <div class="group-inner hospital row" id="tpl_HOT_HOSPITAL"></div>
+            <div class="group-header">
+                <h2 class="group-title">热门医院</h2>
+                <a href="#" class="more">
+                    <span>更多</span><i class="icon-next"></i>
+                </a>
+            </div>
+            <div class="group-content hospital" id="tpl_HOT_HOSPITAL"></div>
         </div>
         <div class="group module">
-            <h2 class="group-title">~~热门医生~~</h2>
-            <div class="group-inner doctor row" id="tpl_HOT_DOCTOR"></div>
+            <div class="group-header">
+                <h2 class="group-title">热门医生</h2>
+                <a href="#" class="more">
+                    <span>更多</span><i class="icon-next"></i>
+                </a>
+            </div>
+            <div class="group-content doctor row" id="tpl_HOT_DOCTOR"></div>
         </div>
     </div>
     <div id="footer">
@@ -134,49 +158,47 @@
     </div>
 </div>
 
-<script id="tpl-HOT-DOCTOR" type="text/html">
-    <div class="swiper-container scale" id="doctor">
-        <div class="swiper-wrapper">
-            {{each data}}
-            <div class="swiper-slide">
-                <div class="group-item">
-                    <a href="javascript:void(0);" target="_self">
-                        <div class="item-img">
-                            <img src="{{$value.doctImage||'../images/pic.png'}}"/>
-                        </div>
-                        <div class="item-info">
-                            <h3 class="item-title">{{$value.doctName}}</h3>
-                            <div class="item-desc ellipsis">{{$value.realName}}</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            {{/each}}
-        </div>
-    </div>
-</script>
-
 <script id="tpl-HOT-HOSPITAL" type="text/html">
-    <div class="swiper-container scale" id="hospital">
-        <div class="swiper-wrapper">
-            {{each data}}
-            <div class="swiper-slide">
-                <div class="group-item">
-                    <a href="javascript:void(0);" target="_self">
-                        <div class="item-img">
-                            <img src="{{$value.hosImg||'../images/pic.png'}}"/>
-                        </div>
-                        <div class="item-info">
-                            <h3 class="item-title ellipsis">{{$value.hospitalName}}</h3>
-                            <div class="item-type">类型：<em>{{$value.hospitalType}}</em></div>
-                            <div class="item-desc ellipsis">特色科室：{{$value.dept||'--'}}</div>
-                        </div>
-                    </a>
+    {{each data}}
+    <div class="group-item scale">
+        <a href="#" target="_self">
+            <div class="item-inner">
+                <div class="item-img">
+                    <img src="../images/hospital.png"/>
+                </div>
+                <div class="item-info">
+                    <h3 class="item-title">温州市第七人民医院</h3>
+                    <div class="item-row">
+                        <label class="item-label">医院类型：</label>
+                        <span class="item-span">二级甲等</span>
+                    </div>
+                    <div class="item-row">
+                        <label class="item-label">特色科室：</label>
+                        <span class="item-span">专科专病门诊</span>
+                    </div>
                 </div>
             </div>
-            {{/each}}
-        </div>
+        </a>
     </div>
+    {{/each}}
+</script>
+<script id="tpl-HOT-DOCTOR" type="text/html">
+    {{each data}}
+    <div class="group-item col-xs-4 scale">
+        <a href="#" target="_self">
+            <div class="item-inner">
+                <div class="item-img">
+                    <img src="../images/doctor.png"/>
+                </div>
+                <div class="item-info">
+                    <div class="item-name">马大正</div>
+                    <span class="item-span">副主任医师</span>
+                    <span class="item-span">温州市第七人民医院</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    {{/each}}
 </script>
 
 <script type="text/javascript" src="../libs/require/require.js"></script>
