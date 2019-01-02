@@ -1,4 +1,4 @@
-require(['jquery', 'common', 'template', 'fastclick', 'swiper'], function ($, common, template, fastclick, swiper) {
+ï»¿require(['jquery', 'common', 'template', 'fastclick', 'swiper'], function ($, common, template, fastclick, swiper) {
 
     function UserPage() {
         var arguments = arguments.length ? arguments[0] : arguments;
@@ -19,6 +19,6 @@ require(['jquery', 'common', 'template', 'fastclick', 'swiper'], function ($, co
 
     var name = localStorage.NickName;
     if (!name)
-        name = 'µÇÂ¼/×¢²á';
+        name = 'ç™»å½•/æ³¨å†Œ';
     $('#info_user').text(name);
 });

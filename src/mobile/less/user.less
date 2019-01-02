@@ -9,15 +9,20 @@
   }
   #body {
     .user {
+      background: -webkit-linear-gradient(left, #b721ff, #21d4fd);
+      background: -o-linear-gradient(right, #b721ff, #21d4fd);
+      background: -moz-linear-gradient(right, #b721ff, #21d4fd);
+      background: linear-gradient(to right, #b721ff, #21d4fd);
       .user-base {
         height: 1.7rem;
         padding: 0 0.1rem;
-        background-size: 100% auto;
-        background-repeat: no-repeat;
+        background-size: 0.37rem;
+        background-repeat: repeat;
         background-position: center center;
-        background-image: url("../images/user_bg@2x.png");
+        background-image: url("../images/user_bg_cell@2x.png");
         text-align: center;
         font-size: 0;
+        position: relative;
         &:before {
           content: '';
           height: 100%;
@@ -27,18 +32,44 @@
         a {
           display: inline-block;
           vertical-align: middle;
+          position: absolute;
+          top: 0.4rem;
+          left: 0.35rem;
           img {
             width: 0.8rem;
             height: 0.8rem;
             border-radius: 100%;
+            float: left;
           }
           p {
             height: 0.2rem;
             line-height: 0.2rem;
             margin-top: 0.2rem;
+            padding-left: 0.1rem;
             text-align: center;
             font-size: 0.16rem;
             color: @white;
+            display: inline-block;
+          }
+        }
+        .user-code-section {
+          position: absolute;
+          right: 0.35rem;
+          top: 0.4rem;
+          .user-code {
+            width: 0.9rem;
+            height: 0.9rem;
+            padding: 0.075rem;
+            border:2px solid #ffffff;
+            border-radius:4px;
+            background: -webkit-linear-gradient(right bottom, #b721ff, #21d4fd);
+            background: -o-linear-gradient(left top, #b721ff, #21d4fd);
+            background: -moz-linear-gradient(left top, #b721ff, #21d4fd);
+            background: linear-gradient(to left top, #b721ff, #21d4fd);
+            .nocode {
+              width: 100%;
+              height: 100%;
+            }
           }
         }
       }
