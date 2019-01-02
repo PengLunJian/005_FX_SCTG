@@ -31,6 +31,9 @@ define(['jquery', 'Host'], function ($, Host) {
                 pageSize: '5'
             }
         },
+        selectDefaultCard: {
+            url: 'PatientCard/v1/patientCard/getDefaultCardDetail'
+        },
         getUrl: function (api) {
             var url = Host.HOST_PUB + this.baseUrl;
             return url + this[api].url;
