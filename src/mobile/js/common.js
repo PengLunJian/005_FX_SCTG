@@ -58,7 +58,7 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain', 'Mock'], function (
         });
         Mock.mock(apiMain.getUrl('hotHospital'), function () {
             return {
-                success: false,
+                success: true,
                 data: [
                     {}, {}, {}
                 ]
