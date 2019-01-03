@@ -161,6 +161,7 @@ gulp.task('server', function () {
     };
     plugins.connect.server(config);
     open('http://' + IP + ':' + config.port + '/app/index.html');
+    // open('http://localhost:' + config.port + '/app/scanner.html');
 
     gulp.watch(srcPath + 'app/**/*.html', ['build:html']);
     gulp.watch(srcPath + 'less/**/*.less', ['build:less']);
