@@ -1,21 +1,33 @@
 ﻿require(['jquery', 'common', 'template', 'fastclick', 'swiper', 'apiMain', 'Toast'], function ($, common, template, fastclick, swiper, apiMain, Toast) {
-
+    /**
+     *
+     * @constructor
+     */
     function UserPage() {
         var arguments = arguments.length ? arguments[0] : arguments;
 
         this.constructor();
     };
-
+    /**
+     *
+     * @returns {UserPage}
+     */
     UserPage.prototype.constructor = function () {
         this.renderTemplate();
         this.ajaxRequestCode();
         return this;
     };
-
+    /**
+     *
+     * @returns {UserPage}
+     */
     UserPage.prototype.renderTemplate = function () {
         return this;
     };
-
+    /**
+     *
+     * @returns {UserPage}
+     */
     UserPage.prototype.ajaxRequestCode = function () {
         common.$ajax({
             url: apiMain.getUrl('selectDefaultCard'),
@@ -34,7 +46,9 @@
         });
         return this;
     };
-
+    /**
+     * 
+     */
     new UserPage();
 
     var name = localStorage.NickName;
