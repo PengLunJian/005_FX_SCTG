@@ -9,9 +9,17 @@
   }
   #body {
     .user {
-      background: linear-gradient(to right, #b721ff, #21d4fd);
+      .user-container {
+        min-height: 1.7rem;
+        .loading, .error, .empty {
+          height: 1.7rem;
+        }
+      }
+      .user-content {
+        background: linear-gradient(to right, #b721ff, #21d4fd);
+      }
       .user-inner {
-        padding: 0.28rem 0.35rem;
+        padding: 0.28rem 0.3rem;
         background-size: 100% auto;
         background-repeat: no-repeat;
         background-position: center center;

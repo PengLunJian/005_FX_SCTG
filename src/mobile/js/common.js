@@ -60,7 +60,21 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain', 'Mock'], function (
             return {
                 success: true,
                 data: [
-                    {}, {}, {}
+                    {
+                        name: '温州市第七人民医院',
+                        level: '二级甲等',
+                        img: '../images/hospital01.png'
+                    },
+                    {
+                        name: '温州市中医院',
+                        level: '三级甲等',
+                        img: '../images/hospital02.png'
+                    },
+                    {
+                        name: '温州医科大学附属第一医院',
+                        level: '三级甲等',
+                        img: '../images/hospital03.png'
+                    }
                 ]
             }
         });
@@ -68,9 +82,52 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain', 'Mock'], function (
             return {
                 success: true,
                 data: [
-                    {}, {}, {},
-                    {}, {}, {}
+                    {
+                        name: '陈光群',
+                        job: '副主任医师',
+                        hospital: '温州市第七人民医院',
+                        img: '../images/doctor01.png'
+                    },
+                    {
+                        name: '单泽松',
+                        job: '副主任医师',
+                        hospital: '温州医学院附属第一医院',
+                        img: '../images/doctor02.png'
+                    },
+                    {
+                        name: '林上助',
+                        job: '副主任医师',
+                        hospital: '温州市人民医院',
+                        img: '../images/doctor03.png'
+                    },
+                    {
+                        name: '马大正',
+                        job: '副主任医师',
+                        hospital: '温州市第七人民医院',
+                        img: '../images/doctor04.png'
+                    },
+                    {
+                        name: '张云霞',
+                        job: '副主任医师',
+                        hospital: '温州市中医院',
+                        img: '../images/doctor05.png'
+                    },
+                    {
+                        name: '谢娟娟',
+                        job: '副主任医师',
+                        hospital: '温州市第七人民医院',
+                        img: '../images/doctor06.png'
+                    }
                 ]
+            }
+        });
+        Mock.mock(apiMain.getUrl('selectDefaultCard'), function () {
+            return {
+                success: true,
+                data: {
+                    name: 'PENG',
+                    qrcode: '../images/user_code@2x.png'
+                }
             }
         });
         return this;

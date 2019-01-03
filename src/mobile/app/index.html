@@ -164,13 +164,13 @@
         <a href="#" target="_self">
             <div class="item-inner">
                 <div class="item-img">
-                    <img src="../images/hospital.png"/>
+                    <img src="{{$value.img}}"/>
                 </div>
                 <div class="item-info">
-                    <h3 class="item-title">温州市第七人民医院</h3>
+                    <h3 class="item-title">{{$value.name}}</h3>
                     <div class="item-row">
                         <label class="item-label">医院类型：</label>
-                        <span class="item-span">二级甲等</span>
+                        <span class="item-span">{{$value.level}}</span>
                     </div>
                     <div class="item-row">
                         <label class="item-label">特色科室：</label>
@@ -188,12 +188,12 @@
         <a href="#" target="_self">
             <div class="item-inner">
                 <div class="item-img">
-                    <img src="../images/doctor.png"/>
+                    <img src="{{$value.img}}"/>
                 </div>
                 <div class="item-info">
-                    <div class="item-name">马大正</div>
-                    <span class="item-span">副主任医师</span>
-                    <span class="item-span">温州市第七人民医院</span>
+                    <div class="item-name">{{$value.name}}</div>
+                    <span class="item-span ellipsis">{{$value.job}}</span>
+                    <span class="item-span ellipsis">{{$value.hospital}}</span>
                 </div>
             </div>
         </a>
@@ -206,4 +206,3 @@
 <script type="text/javascript" src="../js/index.js"></script>
 </body>
 </html>
-

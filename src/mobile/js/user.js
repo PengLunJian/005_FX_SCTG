@@ -1,4 +1,4 @@
-﻿require(['jquery', 'common', 'template', 'fastclick', 'swiper', 'apiMain', 'Toast'], function ($, common, template, fastclick, swiper, apiMain, Toast) {
+﻿require(['jquery', 'common', 'template', 'fastclick', 'apiMain'], function ($, common, template, fastclick, apiMain) {
     /**
      *
      * @constructor
@@ -13,46 +13,44 @@
      * @returns {UserPage}
      */
     UserPage.prototype.constructor = function () {
-        this.renderTemplate();
-        this.ajaxRequestCode();
+        this.exeAjaxRequestDefaultCard();
         return this;
     };
     /**
      *
      * @returns {UserPage}
      */
-    UserPage.prototype.renderTemplate = function () {
-        return this;
-    };
-    /**
-     *
-     * @returns {UserPage}
-     */
-    UserPage.prototype.ajaxRequestCode = function () {
+    UserPage.prototype.ajaxRequestDefaultCard = function () {
         common.$ajax({
             url: apiMain.getUrl('selectDefaultCard'),
+            $renderContainer: $('#tpl_LOGIN_CONTAINER'),
             success: function (data) {
                 data = data || {};
-                var toast = new Toast();
                 if (data.success) {
-                    $('#codeImg').src(data.qrcodeUrl);
-                    toast.show(toast.SUCCESS, '请求成功');
-                } else {
-                    $('#codeImg').src('../images/user-nocode@2x.png');
-                    toast.show(toast.ERROR, '请求失败');
+                    if (!common.ajaxDataIsExist(data)) return;
+                    var templateHtml = template('tpl-LOGIN-SUCCESS', data);
+                    this.$renderContainer.html(templateHtml);
                 }
-                toast = null;
             }
         });
         return this;
     };
     /**
-     * 
+     *
+     * @returns {UserPage}
+     */
+    UserPage.prototype.exeAjaxRequestDefaultCard = function () {
+        var nickName = localStorage.NickName;
+        if (!nickName) {
+            var templateHtml = template('tpl-LOGIN-FAILURE');
+            $('#tpl_LOGIN_CONTAINER').html(templateHtml);
+        } else {
+            this.ajaxRequestDefaultCard();
+        }
+        return this;
+    };
+    /**
+     *
      */
     new UserPage();
-
-    var name = localStorage.NickName;
-    if (!name)
-        name = '登录/注册';
-    $('#info_user').text(name);
 });
