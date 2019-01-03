@@ -8,6 +8,7 @@ require.config({
         fastclick: 'libs/fastclick/fastclick',
         swiper: 'libs/swiper/swiper.min',
         LArea: 'libs/LArea/LArea.min',
+        Mock: 'libs/mock/dist/mock-min',
         apiMain: 'js/apiMain',
         Toast: 'js/toast',
         Timer: 'js/timer',

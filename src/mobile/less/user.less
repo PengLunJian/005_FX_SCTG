@@ -9,6 +9,61 @@
   }
   #body {
     .user {
+      background: linear-gradient(to right, #b721ff, #21d4fd);
+      .user-inner {
+        padding: 0.28rem 0.35rem;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: url('../images/user_bg@2x.png');
+        .pull-left {
+          padding: 0.12rem 0;
+          font-size: 0;
+          .user-img {
+            width: 0.9rem;
+            height: 0.9rem;
+            padding: 0.08rem;
+            display: inline-block;
+            vertical-align: middle;
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-image: url("../images/user_border@2x.png");
+            img {
+              border-radius: 100%;
+            }
+          }
+          .user-name {
+            padding-left: 0.1rem;
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 0.15rem;
+            color: @white;
+          }
+        }
+        .pull-right {
+          padding-top: 0.06rem;
+          .user-code {
+            width: 0.9rem;
+            height: 0.9rem;
+            padding: 0.07rem;
+            margin: 0 auto 0.04rem;
+            border-radius: 0.02rem;
+            border: 0.01rem solid @white;
+            background-image: linear-gradient(-45deg, #bb2fff 0%, #21d4fd 100%);
+            img {
+              border-radius: 0.02rem;
+            }
+          }
+          .user-text {
+            height: 0.14rem;
+            line-height: 0.14rem;
+            text-align: center;
+            font-size: 0.09rem;
+            color: @white;
+          }
+        }
+      }
       .user-base {
         height: 1.7rem;
         padding: 0 0.1rem;
