@@ -46,19 +46,19 @@
                     </a>
                 </li>
                 <li class="nav-item col-xs-3">
-                    <a href="javascript:gohost('/GRZX/JFJL')" target="_self">
+                    <a href="javascript:gohost('GRZX/JFJL')" target="_self">
                         <img src="../images/nav_item02@2x.png" alt="item01">
                         <p class="item-desc">在线缴费</p>
                     </a>
                 </li>
                 <li class="nav-item col-xs-3">
-                    <a href="javascript:gohost('/GRZX/JCBG')" target="_self">
+                    <a href="javascript:gohost('GRZX/JCBG')" target="_self">
                         <img src="../images/nav_item03@2x.png" alt="item01">
                         <p class="item-desc">查报告单</p>
                     </a>
                 </li>
                 <li class="nav-item col-xs-3">
-                    <a href="javascript:gohost('/GRZX/JKDA')" target="_self">
+                    <a href="javascript:gohost('GRZX/JKDA')" target="_self">
                         <img src="../images/nav_item04@2x.png" alt="item01">
                         <p class="item-desc">健康档案</p>
                     </a>
@@ -68,7 +68,7 @@
         <div class="menus module">
             <div class="menu-inner row">
                 <div class="menu-item col-xs-6">
-                    <a href="#" target="_self">
+                    <a href="javascript:gohost('GRZX/WDYY')" target="_self">
                         <div class="item-img">
                             <img src="../images/menu_icon01.png" alt="预约记录"/>
                         </div>
@@ -79,7 +79,7 @@
                     </a>
                 </div>
                 <div class="menu-item col-xs-6">
-                    <a href="#" target="_self">
+                    <a href="javascript:gohost('GRZX/JFJL')" target="_self">
                         <div class="item-img">
                             <img src="../images/menu_icon02.png" alt="先诊后付费"/>
                         </div>
@@ -90,7 +90,7 @@
                     </a>
                 </div>
                 <div class="menu-item col-xs-6">
-                    <a href="#" target="_self">
+                    <a href="javascript:gohost('wait')" target="_self">
                         <div class="item-img">
                             <img src="../images/menu_icon03.png" alt="智能导诊"/>
                         </div>
@@ -101,7 +101,7 @@
                     </a>
                 </div>
                 <div class="menu-item col-xs-6">
-                    <a href="#" target="_self">
+                    <a href="javascript:gohost('GRZX/JZTM')" target="_self">
                         <div class="item-img">
                             <img src="../images/menu_icon04.png" alt="一码通行"/>
                         </div>
@@ -116,7 +116,7 @@
         <div class="group module">
             <div class="group-header">
                 <h2 class="group-title">热门医院</h2>
-                <a href="#" class="more">
+                <a href="javascript:void(0)" class="more">
                     <span>更多</span><i class="icon-next"></i>
                 </a>
             </div>
@@ -125,7 +125,7 @@
         <div class="group module">
             <div class="group-header">
                 <h2 class="group-title">热门医生</h2>
-                <a href="#" class="more">
+                <a href="javascript:void(0)" class="more">
                     <span>更多</span><i class="icon-next"></i>
                 </a>
             </div>
@@ -161,7 +161,7 @@
 <script id="tpl-HOT-HOSPITAL" type="text/html">
     {{each data}}
     <div class="group-item scale">
-        <a href="#" target="_self">
+        <a href="hospital.html" target="_self">
             <div class="item-inner">
                 <div class="item-img">
                     <img src="{{$value.img}}"/>
@@ -185,7 +185,7 @@
 <script id="tpl-HOT-DOCTOR" type="text/html">
     {{each data}}
     <div class="group-item col-xs-4 scale">
-        <a href="#" target="_self">
+        <a href="hospital.html" target="_self">
             <div class="item-inner">
                 <div class="item-img">
                     <img src="{{$value.img}}"/>

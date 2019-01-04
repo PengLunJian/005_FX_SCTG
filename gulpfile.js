@@ -149,11 +149,11 @@ gulp.task('server', function () {
         middleware: function (connect, opt) {
             return [
                 proxy('/UserCenter/', {
-                    target: 'http://192.168.1.192',
+                    target: 'http://zero.yizuanbao.cn', // 'http://192.168.1.192',
                     changeOrigin: true
                 }),
                 proxy('/WenRongBusiness/', {
-                    target: 'http://192.168.1.192',
+                    target: 'http://zero.yizuanbao.cn',// 'http://192.168.1.192',
                     changeOrigin: true
                 })
             ];
