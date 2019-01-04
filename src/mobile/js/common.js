@@ -126,6 +126,7 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain', 'Mock'], function (
                 success: true,
                 data: {
                     name: 'PENG',
+                    nickName: localStorage.getItem('NickName'),
                     qrcode: '../images/user_code@2x.png'
                 }
             }
