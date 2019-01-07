@@ -300,14 +300,14 @@ function gohost(state) {
 
     var url;
     if (state === 'wait') {
-        url = '/JY/app/wait.html';
+        url = '/home/app/wait.html';
     }
     else if (state === 'context') {
-        url = '/JY/app/context.html';
+        url = '/home/app/context.html';
     }
     else {
         sessionStorage.setItem('jump_url', state);
-        url = '/JY/app/jump.html';
+        url = '/home/app/jump.html';
     }
     if (localStorage.sys_access_token) {
         location.href = url;
