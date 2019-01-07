@@ -161,7 +161,7 @@
 <script id="tpl-HOT-HOSPITAL" type="text/html">
     {{each data}}
     <div class="group-item scale">
-        <a href="hospital.html" target="_self">
+        <a href="javascript:gohost('YYGH?isPre=0')" target="_self">
             <div class="item-inner">
                 <div class="item-img">
                     <img src="{{$value.img}}"/>
@@ -185,7 +185,7 @@
 <script id="tpl-HOT-DOCTOR" type="text/html">
     {{each data}}
     <div class="group-item col-xs-4 scale">
-        <a href="hospital.html" target="_self">
+        <a href="javascript:gohost('YYGH?isPre=0')" target="_self">
             <div class="item-inner">
                 <div class="item-img">
                     <img src="{{$value.img}}"/>
