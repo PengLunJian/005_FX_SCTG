@@ -8,7 +8,6 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>旭辉健康--资讯</title>
-    <link rel="stylesheet" type="text/css" href="../libs/swiper/swiper.min.css"/>
     <link rel="stylesheet" type="text/css" href="../css/common.css"/>
     <link rel="stylesheet" type="text/css" href="../css/font.css"/>
     <link rel="stylesheet" type="text/css" href="../css/information.css"/>
@@ -18,25 +17,6 @@
 <div id="main">
     <div id="header"></div>
     <div id="body">
-        <!--<div class="banner">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="../images/information_banner01.png" alt="banner01"/>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../images/information_banner02.png" alt="banner02"/>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../images/information_banner03.png" alt="banner03"/>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../images/information_banner04.png" alt="banner04"/>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>-->
         <div class="navigation module">
             <ul class="nav-inner row">
                 <li class="nav-item col-xs-3">
@@ -65,64 +45,14 @@
                 </li>
             </ul>
         </div>
-        <div class="hot module">
-            <h2 class="title">热门话题</h2>
-            <div class="hot-inner row">
-                <div class="hot-item col-xs-6">
-                    <a href="detail.html" target="_self">
-                        <div class="item-img">
-                            <img src="../images/product.jpg"/>
-                        </div>
-                        <div class="item-info ellipsis">急救知识走进市委党校</div>
-                    </a>
-                </div>
-                <div class="hot-item col-xs-6">
-                    <a href="detail.html" target="_self">
-                        <div class="item-img">
-                            <img src="../images/product1.png"/>
-                        </div>
-                        <div class="item-info ellipsis">【义诊】台州市立医院与中国红十字华山医院合作17周年大型义诊活动</div>
-                    </a>
-                </div>
-            </div>
-        </div>
         <div class="product module">
-            <div class="product-item">
-                <a class="row" href="detail.html" target="_self">
-                    <div class="item-img">
-                        <img src="../images/product2.png"/>
-                    </div>
-                    <div class="item-info">
-                        <h2 class="item-title">一图读懂|2018年防治流感核心知识点</h2>
-                        <p class="item-desc ellipsis">水果蒸着吃，营养能翻倍！冬季怕凉的都来看看冬季怕凉的都来看看</p>
-                        <span class="item-time">发布时间：2018-11-28 </span>
-                    </div>
+            <div class="product-header">
+                <h2 class="product-title">热门资讯</h2>
+                <a href="javascript:void(0)" class="more">
+                    <span>更多</span><i class="icon-next"></i>
                 </a>
             </div>
-            <div class="product-item">
-                <a class="row" href="detail.html" target="_self">
-                    <div class="item-img">
-                        <img src="../images/product3.png"/>
-                    </div>
-                    <div class="item-info">
-                        <h2 class="item-title">一图读懂|2018年防治流感核心知识点</h2>
-                        <p class="item-desc ellipsis">水果蒸着吃，营养能翻倍！冬季怕凉的都来看看冬季怕凉的都来看看</p>
-                        <span class="item-time">发布时间：2018-11-28 </span>
-                    </div>
-                </a>
-            </div>
-            <div class="product-item">
-                <a class="row" href="detail.html" target="_self">
-                    <div class="item-img">
-                        <img src="../images/product4.png"/>
-                    </div>
-                    <div class="item-info">
-                        <h2 class="item-title">一图读懂|2018年防治流感核心知识点</h2>
-                        <p class="item-desc ellipsis">水果蒸着吃，营养能翻倍！冬季怕凉的都来看看冬季怕凉的都来看看</p>
-                        <span class="item-time">发布时间：2018-11-28 </span>
-                    </div>
-                </a>
-            </div>
+            <div class="product-content" id="tpl_NEWS_ITEMS"></div>
         </div>
     </div>
     <div id="footer">
@@ -150,6 +80,25 @@
         </ul>
     </div>
 </div>
+
+<script type="text/html" id="tpl-NEWS-ITEM">
+    {{each data}}
+    <div class="product-item fade">
+        <a href="javascript:gohost('wait');" target="_self">
+            <div class="item-inner row">
+                <div class="item-img">
+                    <img src="{{$value.img}}"/>
+                </div>
+                <div class="item-info">
+                    <h2 class="item-title">{{$value.title}}</h2>
+                    <span class="item-desc">{{$value.description}}</span>
+                    <span class="item-time">{{$value.dateTime}}</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    {{/each}}
+</script>
 
 <script type="text/javascript" src="../libs/require/require.js"></script>
 <script type="text/javascript" src="../js/require-config.js"></script>

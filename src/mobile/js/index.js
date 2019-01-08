@@ -1,4 +1,4 @@
-require(['jquery', 'common', 'template', 'fastclick', 'swiper', 'apiMain'], function ($, common, template, fastclick, swiper, apiMain) {
+require(['jquery', 'common', 'template', 'swiper', 'apiMain'], function ($, common, template, swiper, apiMain) {
     /**
      *
      * @constructor

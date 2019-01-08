@@ -34,7 +34,7 @@ require(['jquery'], function ($) {
      * @returns {ScannerPage}
      */
     ScannerPage.prototype.error = function (error) {
-        alert("访问用户媒体设备失败：" + error);
+        console.log("访问用户媒体设备失败：" + error);
         return this;
     };
     /**
@@ -46,24 +46,24 @@ require(['jquery'], function ($) {
      */
     ScannerPage.prototype.scannerFace = function (constrains, success, error) {
         if (navigator.mediaDevices) {
-            alert('mediaDevices')
+            console.log('mediaDevices');
             if (navigator.mediaDevices.getUserMedia) {
                 navigator.mediaDevices.getUserMedia(constrains)
                     .then(success)
                     .catch(error);
             }
         } else if (navigator.webkitGetUserMedia) {
-            alert('webkitGetUserMedia')
+            console.log('webkitGetUserMedia');
             navigator.webkitGetUserMedia(constrains)
                 .then(success)
                 .catch(error);
         } else if (navigator.mozGetUserMedia) {
-            alert('mozGetUserMedia')
+            console.log('mozGetUserMedia');
             navigator.mozGetUserMedia(constrains)
                 .then(success)
                 .catch(error);
         } else if (navigator.getUserMedia) {
-            alert('getUserMedia')
+            console.log('getUserMedia');
             navigator.getUserMedia(constrains)
                 .then(success)
                 .catch(error);
@@ -82,7 +82,7 @@ require(['jquery'], function ($) {
             var constrains = {video: {width: 480, height: 320}};
             this.scannerFace(constrains, this.success, this.error);
         } else {
-            alert("你的浏览器不支持访问用户媒体设备");
+            console.log("你的浏览器不支持访问用户媒体设备");
         }
         return this;
     };

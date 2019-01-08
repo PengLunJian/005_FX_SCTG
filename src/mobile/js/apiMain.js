@@ -34,6 +34,9 @@ define(['jquery', 'Host'], function ($, Host) {
         selectDefaultCard: {
             url: 'PatientCard/v1/patientCard/getDefaultCardDetail'
         },
+        selectNewsItems: {
+            url: 'select/news/items'
+        },
         getUrl: function (api) {
             var url = Host.HOST_PUB + this.baseUrl;
             return url + this[api].url;

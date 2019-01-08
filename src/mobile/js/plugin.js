@@ -45,8 +45,7 @@ define(['jquery'], function ($) {
      * @returns {Plugin}
      */
     Plugin.prototype.showBigLoading = function () {
-        var _this = this;
-        if ($(_this.bgLoadingSelector)[0]) return;
+        if ($(this.bgLoadingSelector)[0]) return;
         this.bgLoadingContainer.append(this.bgLoadingTemplate);
         return this;
     };

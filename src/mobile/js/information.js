@@ -1,25 +1,43 @@
-require(['jquery', 'common', 'template', 'fastclick', 'swiper'], function ($, common, template, fastclick, swiper) {
-
+require(['jquery', 'common', 'template', 'apiMain'], function ($, common, template, apiMain) {
+    /**
+     *
+     * @constructor
+     */
     function InformationPage() {
         var arguments = arguments.length ? arguments[0] : arguments;
-        this.swiper = arguments['swiper'] ? arguments['swiper'] : null;
 
         this.constructor();
     };
-
+    /**
+     *
+     * @returns {InformationPage}
+     */
     InformationPage.prototype.constructor = function () {
-        this.initSwiper();
+        this.ajaxRequestNewsItems();
+        return this;
     };
-
-    InformationPage.prototype.initSwiper = function () {
-        this.swiper = new swiper('.swiper-container', {
-            autoplay: 3000,
-            loop: true,
-            autoplayDisableOnInteraction: false,
-            pagination: '.swiper-pagination'
-        })
+    /**
+     *
+     * @returns {InformationPage}
+     */
+    InformationPage.prototype.ajaxRequestNewsItems = function () {
+        common.$ajax({
+            url: apiMain.getUrl('selectNewsItems'),
+            $renderContainer: $('#tpl_NEWS_ITEMS'),
+            success: function (data) {
+                data = data || {};
+                if (data.success) {
+                    if (!common.ajaxDataIsExist(data)) return;
+                    var templateHtml = template('tpl-NEWS-ITEM', data);
+                    this.$renderContainer.html(templateHtml);
+                }
+            }
+        });
+        return this;
     };
-
+    /**
+     *
+     */
     new InformationPage();
 
 });

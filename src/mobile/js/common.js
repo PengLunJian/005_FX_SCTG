@@ -54,7 +54,7 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain', 'Mock'], function (
      */
     Common.prototype.useMock = function () {
         Mock.setup({
-            timeout: 1000
+            timeout: 0
         });
         Mock.mock(apiMain.getUrl('hotHospital'), function () {
             return {
@@ -129,6 +129,37 @@ define(['jquery', 'fastclick', 'Toast', 'Plugin', 'apiMain', 'Mock'], function (
                     nickName: localStorage.getItem('NickName'),
                     qrcode: '../images/user_code@2x.png'
                 }
+            }
+        });
+        Mock.mock(apiMain.getUrl('selectNewsItems'), function () {
+            return {
+                success: true,
+                data: [
+                    {
+                        img: '../images/news_item01@2x.png',
+                        title: '医疗“触网” 助力互联网与医疗健康发展新业态',
+                        description: '健康科技',
+                        dateTime: '2018-12-25'
+                    },
+                    {
+                        img: '../images/news_item02@2x.png',
+                        title: 'AI+医疗发展建言，从运用落地到新一代智能医疗系统构建',
+                        description: '健康科技',
+                        dateTime: '2018-12-25'
+                    },
+                    {
+                        img: '../images/news_item03@2x.png',
+                        title: '一图读懂2018年防治流感核心知识点',
+                        description: '健康养生',
+                        dateTime: '2018-12-25'
+                    },
+                    {
+                        img: '../images/news_item04@2x.png',
+                        title: '流感高发期，你接种疫苗了吗？',
+                        description: '健康养生',
+                        dateTime: '2018-12-25'
+                    }
+                ]
             }
         });
         return this;

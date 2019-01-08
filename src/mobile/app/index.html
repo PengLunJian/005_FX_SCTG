@@ -158,9 +158,27 @@
     </div>
 </div>
 
+<script id="tpl-HOT-DOCTOR" type="text/html">
+    {{each data}}
+    <div class="group-item col-xs-4 fade">
+        <a href="javascript:gohost('YYGH?isPre=0')" target="_self">
+            <div class="item-inner">
+                <div class="item-img">
+                    <img src="{{$value.img}}"/>
+                </div>
+                <div class="item-info">
+                    <div class="item-name">{{$value.name}}</div>
+                    <span class="item-span ellipsis">{{$value.job}}</span>
+                    <span class="item-span ellipsis">{{$value.hospital}}</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    {{/each}}
+</script>
 <script id="tpl-HOT-HOSPITAL" type="text/html">
     {{each data}}
-    <div class="group-item scale">
+    <div class="group-item fade">
         <a href="javascript:gohost('YYGH?isPre=0')" target="_self">
             <div class="item-inner">
                 <div class="item-img">
@@ -176,24 +194,6 @@
                         <label class="item-label">特色科室：</label>
                         <span class="item-span">专科专病门诊</span>
                     </div>
-                </div>
-            </div>
-        </a>
-    </div>
-    {{/each}}
-</script>
-<script id="tpl-HOT-DOCTOR" type="text/html">
-    {{each data}}
-    <div class="group-item col-xs-4 scale">
-        <a href="javascript:gohost('YYGH?isPre=0')" target="_self">
-            <div class="item-inner">
-                <div class="item-img">
-                    <img src="{{$value.img}}"/>
-                </div>
-                <div class="item-info">
-                    <div class="item-name">{{$value.name}}</div>
-                    <span class="item-span ellipsis">{{$value.job}}</span>
-                    <span class="item-span ellipsis">{{$value.hospital}}</span>
                 </div>
             </div>
         </a>
