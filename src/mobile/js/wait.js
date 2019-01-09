@@ -1,4 +1,4 @@
-require(['jquery'], function ($) {
+require(['jquery', 'common'], function ($, common) {
     /**
      *
      * @constructor
